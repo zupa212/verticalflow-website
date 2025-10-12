@@ -1,0 +1,18 @@
+# Default OG Image Placeholder
+
+**Purpose**: Fallback image for posts without a cover image
+
+**Recommended specs:**
+- Dimensions: 1200×630px
+- Format: JPG or PNG
+- Size: < 200KB
+- Content: BrandAppart logo + tagline
+
+**Suggested design:**
+- Background: Brand color (#f5f4f0 or #4338ca)
+- Logo: BrandAppart logo centered
+- Text: "The design partner for top-tier companies"
+- Style: Match the homepage aesthetic
+
+Once created, save as: `public/og-default.jpg`
+

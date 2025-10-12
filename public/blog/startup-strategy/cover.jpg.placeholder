@@ -1,0 +1,25 @@
+# Placeholder for cover image
+
+**Recommended specs:**
+- Dimensions: 1200×630px
+- Format: AVIF, WebP, or JPG
+- Size: < 200KB
+- Content: Feature the post title or key visual
+
+**Post title**: Στρατηγική Design για Startups (Design Strategy for Startups)
+
+**Suggested visual themes:**
+- Startup workspace
+- Brand identity elements
+- Strategy/planning visuals
+- Growth/success imagery
+
+Use tools like:
+- Canva (canva.com)
+- Figma
+- Photoshop
+- Or find stock photos on Unsplash
+
+Once you have the image, save it as:
+`public/blog/startup-strategy/cover.jpg`
+
