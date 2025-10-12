@@ -12,7 +12,7 @@ export const mdxComponents: MDXComponents = {
   Code,
 
   // Override default HTML elements
-  a: ({ href, children, ...props }) => {
+  a: ({ href, children }) => {
     const isExternal = href?.startsWith('http');
     
     if (isExternal) {
@@ -22,7 +22,6 @@ export const mdxComponents: MDXComponents = {
           target="_blank"
           rel="noopener noreferrer"
           className="text-indigo-600 hover:text-indigo-700 underline font-medium"
-          {...props}
         >
           {children}
         </a>
@@ -33,14 +32,13 @@ export const mdxComponents: MDXComponents = {
       <Link
         href={href || '#'}
         className="text-indigo-600 hover:text-indigo-700 underline font-medium"
-        {...props}
       >
         {children}
       </Link>
     );
   },
 
-  img: ({ src, alt, ...props }) => {
+  img: ({ src, alt }) => {
     return (
       <span className="block my-8">
         <Image
@@ -49,7 +47,6 @@ export const mdxComponents: MDXComponents = {
           width={1200}
           height={630}
           className="rounded-lg w-full h-auto"
-          {...props}
         />
       </span>
     );
