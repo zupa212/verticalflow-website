@@ -24,12 +24,12 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
 
   // Filter by tag if provided
   if (searchParams.tag) {
-    posts = posts.filter((post) => post.tags.includes(searchParams.tag));
+    posts = posts.filter((post) => post.tags.includes(searchParams.tag as string));
   }
 
   // Filter by language if provided
   if (searchParams.lang) {
-    posts = posts.filter((post) => post.lang === searchParams.lang);
+    posts = posts.filter((post) => post.lang === searchParams.lang as 'en' | 'gr');
   }
 
   return (
