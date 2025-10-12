@@ -11,26 +11,9 @@ export const metadata = {
   description: 'Insights, tips, and stories from the design partner for top-tier companies.',
 };
 
-interface BlogPageProps {
-  searchParams: {
-    tag?: string;
-    lang?: 'en' | 'gr';
-  };
-}
-
-export default function BlogPage({ searchParams }: BlogPageProps) {
-  let posts = getAllPosts(false);
+export default function BlogPage() {
+  const posts = getAllPosts(false);
   const allTags = getAllTags();
-
-  // Filter by tag if provided
-  if (searchParams.tag) {
-    posts = posts.filter((post) => post.tags.includes(searchParams.tag as string));
-  }
-
-  // Filter by language if provided
-  if (searchParams.lang) {
-    posts = posts.filter((post) => post.lang === searchParams.lang as 'en' | 'gr');
-  }
 
   return (
     <div className="min-h-screen bg-[#f5f4f0]">
@@ -58,63 +41,17 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
       </header>
 
       <div className="container mx-auto px-6 py-12">
-        {/* Filters */}
-        <div className="mb-12 flex flex-wrap gap-4 items-center">
-          <div className="flex gap-2 items-center">
-            <span className="text-sm font-medium text-gray-700">Language:</span>
-            <Link href="/blog">
-              <Button
-                variant={!searchParams.lang ? 'default' : 'outline'}
-                size="sm"
-                className="rounded-full"
-              >
-                All
-              </Button>
-            </Link>
-            <Link href="/blog?lang=en">
-              <Button
-                variant={searchParams.lang === 'en' ? 'default' : 'outline'}
-                size="sm"
-                className="rounded-full"
-              >
-                EN
-              </Button>
-            </Link>
-            <Link href="/blog?lang=gr">
-              <Button
-                variant={searchParams.lang === 'gr' ? 'default' : 'outline'}
-                size="sm"
-                className="rounded-full"
-              >
-                GR
-              </Button>
-            </Link>
+        {/* Tags */}
+        {allTags.length > 0 && (
+          <div className="mb-12 flex gap-2 items-center flex-wrap">
+            <span className="text-sm font-medium text-gray-700">Tags:</span>
+            {allTags.map((tag) => (
+              <Badge key={tag} variant="outline" className="cursor-default">
+                {tag}
+              </Badge>
+            ))}
           </div>
-
-          {allTags.length > 0 && (
-            <div className="flex gap-2 items-center flex-wrap">
-              <span className="text-sm font-medium text-gray-700">Tags:</span>
-              {allTags.map((tag) => (
-                <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
-                  <Badge
-                    variant={searchParams.tag === tag ? 'default' : 'outline'}
-                    className="cursor-pointer"
-                  >
-                    {tag}
-                  </Badge>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {(searchParams.tag || searchParams.lang) && (
-            <Link href="/blog">
-              <Button variant="ghost" size="sm">
-                Clear filters
-              </Button>
-            </Link>
-          )}
-        </div>
+        )}
 
         {/* Posts Grid */}
         {posts.length === 0 ? (

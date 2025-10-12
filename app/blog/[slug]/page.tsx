@@ -15,9 +15,6 @@ interface BlogPostPageProps {
   params: {
     slug: string;
   };
-  searchParams: {
-    preview?: string;
-  };
 }
 
 // Generate static params for all posts
@@ -29,9 +26,8 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({ params, searchParams }: BlogPostPageProps) {
-  const isDraft = searchParams.preview === process.env.PREVIEW_TOKEN;
-  const post = getPostBySlug(params.slug, isDraft);
+export async function generateMetadata({ params }: BlogPostPageProps) {
+  const post = getPostBySlug(params.slug, false);
 
   if (!post) {
     return {
@@ -72,9 +68,8 @@ export async function generateMetadata({ params, searchParams }: BlogPostPagePro
   };
 }
 
-export default function BlogPostPage({ params, searchParams }: BlogPostPageProps) {
-  const isDraft = searchParams.preview === process.env.PREVIEW_TOKEN;
-  const post = getPostBySlug(params.slug, isDraft);
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = getPostBySlug(params.slug, false);
 
   if (!post) {
     notFound();
@@ -101,12 +96,6 @@ export default function BlogPostPage({ params, searchParams }: BlogPostPageProps
           </Link>
         </div>
 
-        {/* Draft banner */}
-        {post.draft && (
-          <div className="bg-yellow-100 border-b border-yellow-200 text-yellow-900 px-6 py-3 text-center mt-16 lg:mt-0">
-            <strong>Draft Preview:</strong> This post is not published yet.
-          </div>
-        )}
 
         {/* Header */}
         <header className={`bg-white border-b border-gray-200 ${!post.draft ? 'pt-20 lg:pt-0' : ''}`}>
