@@ -5,26 +5,26 @@ import { Space_Grotesk } from 'next/font/google';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
 export const metadata: Metadata = {
-  title: 'Vertical Flow | The design partner for top-tier companies',
-  description: 'We help funded startups ship iconic brands, conversion-ready sites, and investor-proof decks.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://verticalflow.gr'),
+  title: 'terracube. | Unlock Your Brand\'s Potential',
+  description: 'A team of creative experts dedicated to helping you grow your brand and achieve your business goals through digital marketing and production services.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://terracube.gr'),
   alternates: {
     types: {
-      'application/rss+xml': [{ url: '/rss.xml', title: 'Vertical Flow Blog RSS Feed' }],
+      'application/rss+xml': [{ url: '/rss.xml', title: 'terracube Blog RSS Feed' }],
     },
   },
   openGraph: {
     type: 'website',
     locale: 'el_GR',
     url: '/',
-    siteName: 'Vertical Flow',
-    title: 'Vertical Flow | The design partner for top-tier companies',
-    description: 'We help funded startups ship iconic brands, conversion-ready sites, and investor-proof decks.',
+    siteName: 'terracube',
+    title: 'terracube. | Unlock Your Brand\'s Potential',
+    description: 'A team of creative experts dedicated to helping you grow your brand and achieve your business goals.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vertical Flow | The design partner for top-tier companies',
-    description: 'We help funded startups ship iconic brands, conversion-ready sites, and investor-proof decks.',
+    title: 'terracube. | Unlock Your Brand\'s Potential',
+    description: 'A team of creative experts dedicated to helping you grow your brand and achieve your business goals.',
   },
 };
 
