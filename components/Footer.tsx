@@ -51,14 +51,15 @@ export function Footer() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-black text-white leading-none">VerticalFlow</h3>
-                  <p className="text-xs text-white/60 mt-1">Creative Agency</p>
+                  <p className="text-xs text-white/60 mt-1">Creative Portfolio</p>
                 </div>
               </div>
             </Link>
 
             {/* Description */}
             <p className="text-base text-white/80 leading-relaxed max-w-md">
-              A team of creative experts dedicated to helping you grow your brand and achieve your business goals through innovative digital solutions.
+              I am a creative professional specializing in brand development, digital design, and visual storytelling. 
+              This is my portfolio showcase of creative work and projects.
             </p>
 
             {/* Social Links */}
@@ -221,16 +222,14 @@ export function Footer() {
           <div>
             <h5 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Contact</h5>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>Athens, Greece</li>
+              <li>Portfolio Showcase</li>
               <li>
-                <a href="mailto:hello@verticalflow.gr" className="hover:text-blue-400 transition-colors">
-                  hello@verticalflow.gr
+                <a href="mailto:hello@yourname.com" className="hover:text-blue-400 transition-colors">
+                  hello@yourname.com
                 </a>
               </li>
               <li>
-                <a href="tel:+302101234567" className="hover:text-blue-400 transition-colors">
-                  +30 210 123 4567
-                </a>
+                <span className="text-white/50">Available for projects</span>
               </li>
             </ul>
           </div>
@@ -239,7 +238,7 @@ export function Footer() {
         {/* Bottom Section - Copyright */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} VerticalFlow. All rights reserved.
+            © {new Date().getFullYear()} VerticalFlow. Portfolio showcase - Not a registered business.
           </p>
           <div className="flex items-center gap-6 text-sm text-white/60">
             <Link href="/privacy" className="hover:text-blue-400 transition-colors">

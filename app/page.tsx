@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { ChevronDown, Volume2, VolumeX } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
@@ -11,6 +12,15 @@ import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -56,9 +66,9 @@ export default function HomePage() {
             <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm font-medium">
               Blog
             </Link>
-            <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 text-sm font-bold tracking-wide transition-all duration-300 hover:scale-105">
-              CONTACT US
-            </Button>
+                  <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 text-sm font-bold tracking-wide transition-all duration-300 hover:scale-105">
+                    GET IN TOUCH
+                  </Button>
       </div>
 
           {/* Mobile Menu Button */}
@@ -72,35 +82,36 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-40"
-            poster="/hero-poster.jpg"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90" />
-      </div>
+              {/* Video Background */}
+              <div className="absolute inset-0 z-0">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover opacity-40"
+                  poster="/hero-poster.jpg"
+                >
+                  <source src="/hero-video.mp4" type="video/mp4" />
+                </video>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90" />
+              </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20 text-center">
-          <h1 className="text-6xl sm:text-7xl lg:text-[120px] xl:text-[140px] font-black leading-[0.9] tracking-tight mb-8">
-            VerticalFlow
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">.</span>
-          </h1>
-          <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-[0.2em] mb-16 text-white/90">
-            UNLOCK YOUR BRAND'S POTENTIAL
-          </p>
+            <h1 className="text-6xl sm:text-7xl lg:text-[120px] xl:text-[140px] font-black leading-[0.9] tracking-tight mb-8">
+              VerticalFlow
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">.</span>
+            </h1>
+            <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-[0.2em] mb-16 text-white/90">
+              CREATIVE PORTFOLIO & DESIGN SHOWCASE
+            </p>
           
           {/* CTA Button */}
           <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 rounded-full px-10 py-6 text-base font-bold tracking-wide transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_50px_rgba(59,130,246,0.5)]">
-            GET STARTED
+            VIEW MY WORK
           </Button>
           </div>
 
@@ -109,39 +120,51 @@ export default function HomePage() {
           <ChevronDown className="w-8 h-8 text-white/60" />
           </div>
 
-        {/* Location Tag */}
-        <div className="hidden lg:block absolute bottom-8 right-12 z-10 text-white/60 text-sm">
-          Based in Greece
-        </div>
+              {/* Location Tag */}
+              <div className="hidden lg:block absolute bottom-8 right-12 z-10 text-white/60 text-sm">
+                Based in Greece
+              </div>
+
+              {/* Mute/Unmute Button */}
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-8 right-12 lg:bottom-8 lg:right-12 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/70 transition-all duration-300 group"
+              >
+                {isMuted ? (
+                  <VolumeX className="w-5 h-5 text-white/80 group-hover:text-white" />
+                ) : (
+                  <Volume2 className="w-5 h-5 text-white/80 group-hover:text-white" />
+                )}
+              </button>
       </section>
 
-      {/* What We Do Section */}
+      {/* My Expertise Section */}
       <section className="relative py-24 lg:py-32 bg-gradient-to-b from-black to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left Content */}
             <div className="space-y-8">
               <h2 className="text-5xl lg:text-6xl font-black leading-tight">
-                what we do
+                my expertise
                 <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">.</span>
               </h2>
-              
+
               <p className="text-lg lg:text-xl text-white/80 leading-relaxed">
-                VerticalFlow is a team of creative experts who are dedicated to helping you grow your brand and achieve your business goals.
+                I am a creative professional specializing in brand development, digital design, and visual storytelling.
               </p>
-              
+
               <p className="text-lg lg:text-xl text-white/80 leading-relaxed">
-                Our unique blend of digital marketing and production services ensures that your brand is seen and heard in all the right places.
+                My portfolio showcases a diverse range of projects across various industries, from automotive to lifestyle brands.
               </p>
-              
+
               <p className="text-lg lg:text-xl text-white font-medium">
-                Are you ready to join our team?
+                Let's work together on your next project.
               </p>
             </div>
 
-            {/* Right Content - Services */}
+            {/* Right Content - Skills */}
             <div className="space-y-6">
-              {/* Branding */}
+              {/* Brand Design */}
               <div className="flex items-start gap-4 group cursor-pointer">
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
                   <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,11 +172,11 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Branding
+                  Brand Design
                 </h3>
               </div>
 
-              {/* Video / Content Production */}
+              {/* Video Production */}
               <div className="flex items-start gap-4 group cursor-pointer">
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
                   <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,11 +184,11 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Video / Content Production
+                  Video Production
                 </h3>
               </div>
 
-              {/* Social Media Management */}
+              {/* Digital Design */}
               <div className="flex items-start gap-4 group cursor-pointer">
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
                   <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -173,11 +196,11 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Social Media Management
+                  Digital Design
                 </h3>
               </div>
 
-              {/* Digital Advertising */}
+              {/* Web Development */}
               <div className="flex items-start gap-4 group cursor-pointer">
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
                   <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,11 +209,11 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Digital Advertising
+                  Web Development
                 </h3>
               </div>
 
-              {/* Website Development */}
+              {/* Creative Strategy */}
               <div className="flex items-start gap-4 group cursor-pointer">
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
                   <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,10 +221,10 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Website Development
+                  Creative Strategy
                 </h3>
+              </div>
             </div>
-          </div>
         </div>
       </div>
       </section>
@@ -279,36 +302,15 @@ export default function HomePage() {
       {/* Blog Parallax Section */}
       <BlogParallax />
 
-      {/* Animated Blue Separator */}
-      <div className="relative py-16 bg-black overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full max-w-4xl mx-auto px-6 lg:px-12">
-            <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60"></div>
-          </div>
-        </div>
-        
-        {/* Animated dots */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex space-x-2">
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
-                style={{
-                  animationDelay: `${i * 0.2}s`,
-                  animationDuration: '2s'
-                }}
-              ></div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Floating elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/40 rounded-full animate-ping"></div>
-          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400/40 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/2 left-1/3 w-0.5 h-0.5 bg-blue-300/60 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
-        </div>
+      {/* Animated Blue Line Separator */}
+      <div className="relative py-8 bg-black">
+        <motion.div 
+          className="h-1.5 bg-gradient-to-r from-blue-500/50 via-blue-400 to-blue-500/50"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        ></motion.div>
       </div>
 
       {/* Footer */}
