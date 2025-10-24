@@ -1,0 +1,11 @@
+{
+  "name": "verticalflow-website",
+  "version": "1.0.0",
+  "blocks": {
+    "components": "./components"
+  },
+  "repositories": {
+    "reactbits": "https://reactbits.dev"
+  }
+}
+
