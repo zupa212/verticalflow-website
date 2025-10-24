@@ -279,6 +279,38 @@ export default function HomePage() {
       {/* Blog Parallax Section */}
       <BlogParallax />
 
+      {/* Animated Blue Separator */}
+      <div className="relative py-16 bg-black overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-full max-w-4xl mx-auto px-6 lg:px-12">
+            <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60"></div>
+          </div>
+        </div>
+        
+        {/* Animated dots */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex space-x-2">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+                style={{
+                  animationDelay: `${i * 0.2}s`,
+                  animationDuration: '2s'
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Floating elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/40 rounded-full animate-ping"></div>
+          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400/40 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/3 w-0.5 h-0.5 bg-blue-300/60 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
+        </div>
+      </div>
+
       {/* Footer */}
       <Footer />
     </div>
