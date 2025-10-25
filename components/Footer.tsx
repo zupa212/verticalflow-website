@@ -58,8 +58,7 @@ export function Footer() {
 
             {/* Description */}
             <p className="text-base text-white/80 leading-relaxed max-w-md">
-              I am a creative professional specializing in brand development, digital design, and visual storytelling. 
-              This is my portfolio showcase of creative work and projects.
+              VerticalFlow creative work.
             </p>
 
             {/* Social Links */}

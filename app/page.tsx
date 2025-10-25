@@ -106,7 +106,7 @@ export default function HomePage() {
               <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">.</span>
             </h1>
             <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-[0.2em] mb-16 text-white/90">
-              CREATIVE PORTFOLIO & DESIGN SHOWCASE
+              VERTICALFLOW
             </p>
           
           {/* CTA Button */}
@@ -150,15 +150,15 @@ export default function HomePage() {
               </h2>
 
               <p className="text-lg lg:text-xl text-white/80 leading-relaxed">
-                I am a creative professional specializing in brand development, digital design, and visual storytelling.
+                VerticalFlow creative work.
               </p>
 
               <p className="text-lg lg:text-xl text-white/80 leading-relaxed">
-                My portfolio showcases a diverse range of projects across various industries, from automotive to lifestyle brands.
+                VerticalFlow portfolio projects.
               </p>
 
               <p className="text-lg lg:text-xl text-white font-medium">
-                Let's work together on your next project.
+                VerticalFlow.
               </p>
             </div>
 
@@ -172,7 +172,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Brand Design
+                  Design
                 </h3>
               </div>
 
@@ -184,7 +184,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Video Production
+                  Video
                 </h3>
               </div>
 
@@ -196,7 +196,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Digital Design
+                  Digital
                 </h3>
               </div>
 
@@ -209,7 +209,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Web Development
+                  Web
                 </h3>
               </div>
 
@@ -221,7 +221,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Creative Strategy
+                  Strategy
                 </h3>
               </div>
             </div>

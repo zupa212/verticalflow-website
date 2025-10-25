@@ -130,11 +130,10 @@ export default function ProjectsPage() {
               <span className="text-white">.</span>
             </h1>
             <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-[0.2em] text-white/90 mb-16">
-              CREATIVE PORTFOLIO
+              VERTICALFLOW
             </p>
             <p className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl">
-              Explore my portfolio of creative projects that demonstrate my expertise in brand development, 
-              digital design, and visual storytelling across various industries.
+              VerticalFlow projects.
             </p>
           </div>
         </div>
@@ -216,12 +215,11 @@ export default function ProjectsPage() {
       <section className="relative py-24 lg:py-32 bg-gradient-to-b from-black to-[#0a0a0a]">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-5xl lg:text-6xl font-black leading-tight mb-8">
-            let's work
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> together</span>
-            <span className="text-white">.</span>
+            verticalflow
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">.</span>
           </h2>
           <p className="text-xl lg:text-2xl text-white/80 leading-relaxed mb-12">
-            Interested in collaborating? I'd love to hear about your project and discuss how we can bring your vision to life.
+            VerticalFlow.
           </p>
           <Link
             href="/contact"
