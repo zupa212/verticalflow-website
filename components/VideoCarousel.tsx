@@ -111,7 +111,7 @@ export function VideoCarousel() {
         setIsPlaying(false);
       }
     }
-  }, [currentIndex, reels.length]);
+  }, [currentIndex]);
 
   const togglePlay = useCallback(() => {
     const video = videoRefs.current[currentIndex];
@@ -137,7 +137,7 @@ export function VideoCarousel() {
     if (currentIndex < reels.length - 1) {
       scrollToIndex(currentIndex + 1);
     }
-  }, [currentIndex, reels.length, scrollToIndex]);
+  }, [currentIndex, scrollToIndex]);
 
   const goPrev = useCallback(() => {
     if (currentIndex > 0) {
