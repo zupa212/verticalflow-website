@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronUp, ChevronDown, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
 interface Reel {
@@ -89,7 +89,7 @@ export function VideoCarousel() {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = useCallback((index: number) => {
     if (containerRef.current) {
       const itemHeight = containerRef.current.clientHeight;
       containerRef.current.scrollTo({
@@ -99,9 +99,9 @@ export function VideoCarousel() {
       setCurrentIndex(index);
       setIsPlaying(false);
     }
-  };
+  }, []);
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (containerRef.current) {
       const scrollTop = containerRef.current.scrollTop;
       const itemHeight = containerRef.current.clientHeight;
@@ -111,9 +111,9 @@ export function VideoCarousel() {
         setIsPlaying(false);
       }
     }
-  };
+  }, [currentIndex, reels.length]);
 
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     const video = videoRefs.current[currentIndex];
     if (video) {
       if (isPlaying) {
@@ -123,7 +123,7 @@ export function VideoCarousel() {
       }
       setIsPlaying(!isPlaying);
     }
-  };
+  }, [currentIndex, isPlaying]);
 
   const toggleMute = () => {
     const video = videoRefs.current[currentIndex];
@@ -133,17 +133,17 @@ export function VideoCarousel() {
     }
   };
 
-  const goNext = () => {
+  const goNext = useCallback(() => {
     if (currentIndex < reels.length - 1) {
       scrollToIndex(currentIndex + 1);
     }
-  };
+  }, [currentIndex, reels.length, scrollToIndex]);
 
-  const goPrev = () => {
+  const goPrev = useCallback(() => {
     if (currentIndex > 0) {
       scrollToIndex(currentIndex - 1);
     }
-  };
+  }, [currentIndex, scrollToIndex]);
 
   // Touch handlers for mobile swipe
   const handleTouchStart = (e: React.TouchEvent) => {
