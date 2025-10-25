@@ -171,7 +171,7 @@ export function VideoCarousel() {
       container.addEventListener('scroll', handleScroll);
       return () => container.removeEventListener('scroll', handleScroll);
     }
-  }, [currentIndex]);
+  }, [currentIndex, handleScroll]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -190,7 +190,7 @@ export function VideoCarousel() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, isPlaying]);
+  }, [currentIndex, isPlaying, goNext, goPrev, togglePlay]);
 
   return (
     <div className="relative w-full h-screen bg-black">

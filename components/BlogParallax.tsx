@@ -54,7 +54,7 @@ export function BlogParallax() {
 
           {/* Description */}
           <p className="text-lg lg:text-xl text-white/90 mb-6 leading-relaxed">
-            Stay up to date on the latest trends in digital marketing and production with Terracube's blog.
+            Stay up to date on the latest trends in digital marketing and production with Terracube&apos;s blog.
           </p>
 
           <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">

@@ -179,7 +179,7 @@ function SowbeezContent() {
       <div className="absolute bottom-8 left-8 right-8 bg-[#4338ca] rounded-[20px] p-6 lg:p-8 max-w-[450px]">
         <p className="text-xs text-white/60 mb-2 tracking-wider">TESTIMONIAL</p>
         <p className="text-white text-sm lg:text-base leading-relaxed mb-6">
-          We faced a real challenge with Sowbeez's branding. Brand Appart came highly recommended by major players and they exceeded all our expectations.
+          We faced a real challenge with Sowbeez&apos;s branding. Brand Appart came highly recommended by major players and they exceeded all our expectations.
         </p>
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500" />
