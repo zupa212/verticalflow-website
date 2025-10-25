@@ -21,7 +21,7 @@ export function Footer() {
         <GradientBlinds
           gradientColors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
           angle={0}
-          noise={0.3}
+          noise={0.1}
           blindCount={12}
           blindMinWidth={50}
           spotlightRadius={0.5}

@@ -30,7 +30,7 @@ const hexToRGB = (hex: string): [number, number, number] => {
   return [r, g, b];
 };
 const prepStops = (stops?: string[]) => {
-  const base = (stops && stops.length ? stops : ['#FF9FFC', '#5227FF']).slice(0, MAX_COLORS);
+  const base = (stops && stops.length ? stops : ['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']).slice(0, MAX_COLORS);
   if (base.length === 1) base.push(base[0]);
   while (base.length < MAX_COLORS) base.push(base[base.length - 1]);
   const arr: [number, number, number][] = [];
@@ -41,13 +41,13 @@ const prepStops = (stops?: string[]) => {
 
 const GradientBlinds: React.FC<GradientBlindsProps> = ({
   className,
-  dpr,
+  dpr = typeof window !== 'undefined' ? window.devicePixelRatio : 1,
   paused = false,
-  gradientColors,
+  gradientColors = ['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8'],
   angle = 0,
-  noise = 0.3,
-  blindCount = 16,
-  blindMinWidth = 60,
+  noise = 0.1,
+  blindCount = 12,
+  blindMinWidth = 50,
   mouseDampening = 0.15,
   mirrorGradient = false,
   spotlightRadius = 0.5,
