@@ -237,7 +237,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         // Initialize Lenis with safe defaults
         const lenis = new Lenis({
           duration: 1.1,
-          easing: (t) => 1 - Math.pow(1 - t, 3),
+          easing: (t: number) => 1 - Math.pow(1 - t, 3),
           smoothWheel: true,
           touchMultiplier: 1.5,
           infinite: false,
