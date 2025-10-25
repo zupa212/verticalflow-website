@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { BlogParallax } from '@/components/BlogParallax';
+import { GradientBlindsSection } from '@/components/GradientBlindsSection';
 // Removed ScrollStack - using Framer Motion instead
 import { Footer } from '@/components/Footer';
 
@@ -332,6 +333,9 @@ export default function HomePage() {
 
       {/* Blog Parallax Section */}
       <BlogParallax />
+
+      {/* Gradient Blinds Section */}
+      <GradientBlindsSection />
 
       {/* Animated Blue Line Separator */}
       <div className="relative py-8 bg-black">
