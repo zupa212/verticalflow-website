@@ -90,14 +90,21 @@ export default function HomePage() {
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-full object-cover opacity-40"
                   poster="/hero-poster.jpg"
+                  style={{
+                    WebkitTransform: 'translateZ(0)',
+                    transform: 'translateZ(0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden'
+                  }}
                 >
                   <source src="/hero-video.mp4" type="video/mp4" />
                 </video>
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90" />
-              </div>
+      </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20 text-center">
@@ -123,7 +130,7 @@ export default function HomePage() {
               {/* Location Tag */}
               <div className="hidden lg:block absolute bottom-8 right-12 z-10 text-white/60 text-sm">
                 Based in Greece
-              </div>
+          </div>
 
               {/* Mute/Unmute Button */}
               <button
@@ -223,8 +230,8 @@ export default function HomePage() {
                 <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
                   Strategy
                 </h3>
-              </div>
             </div>
+          </div>
         </div>
       </div>
       </section>

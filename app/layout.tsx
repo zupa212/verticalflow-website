@@ -25,18 +25,59 @@ export default function RootLayout({
         <link rel="icon" href="/icon" />
         <link rel="apple-touch-icon" href="/apple-icon" />
         <meta name="theme-color" content="#3b82f6" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <style dangerouslySetInnerHTML={{
           __html: `
+            /* 120fps iPhone Optimization */
             * {
               -webkit-overflow-scrolling: touch;
               overscroll-behavior: none;
+              -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+              -webkit-perspective: 1000px;
+              perspective: 1000px;
+              -webkit-transform: translateZ(0);
+              transform: translateZ(0);
             }
+            
+            html {
+              scroll-behavior: smooth;
+              -webkit-text-size-adjust: 100%;
+              -webkit-tap-highlight-color: transparent;
+            }
+            
             body {
               touch-action: pan-y;
               -webkit-touch-callout: none;
               -webkit-user-select: none;
               user-select: none;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizeSpeed;
+              overscroll-behavior-y: none;
+            }
+            
+            /* GPU Acceleration for smooth animations */
+            video, img, canvas, svg {
+              -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+              -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+            }
+            
+            /* Disable pull-to-refresh */
+            body {
+              overscroll-behavior-y: none;
+            }
+            
+            /* iOS Safari specific optimizations */
+            @supports (-webkit-touch-callout: none) {
+              body {
+                -webkit-overflow-scrolling: touch;
+              }
             }
           `
         }} />

@@ -26,6 +26,11 @@
   -webkit-transform: translateZ(0);
   perspective: 1000px;
   -webkit-perspective: 1000px;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  contain: layout style paint;
 }
 
 .scroll-stack-end {
