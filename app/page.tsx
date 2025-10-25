@@ -245,12 +245,12 @@ export default function HomePage() {
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <ScrollStack 
                 useWindowScroll={true} 
-                itemDistance={150} 
-                itemStackDistance={40}
-                itemScale={0.03}
-                baseScale={0.85}
-                stackPosition="20%"
-                scaleEndPosition="10%"
+                itemDistance={200} 
+                itemStackDistance={60}
+                itemScale={0.04}
+                baseScale={0.8}
+                stackPosition="25%"
+                scaleEndPosition="15%"
                 rotationAmount={0}
                 blurAmount={0}
               >

@@ -195,18 +195,22 @@ const ScrollStack = ({
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
       const lenis = new Lenis({
-        duration: 1.8,
-        easing: t => 1 - Math.pow(1 - t, 3), // Cubic ease-out for smoother feel
+        duration: 1.2, // Faster for desktop mouse scroll
+        easing: t => 1 - Math.pow(1 - t, 4), // Quartic ease-out for more responsive feel
         smoothWheel: true,
-        touchMultiplier: 1.5, // Reduced for smoother touch
+        touchMultiplier: 1.2, // Optimized for touch
         infinite: false,
-        wheelMultiplier: 1.2,
-        lerp: 0.08, // Smoother interpolation
+        wheelMultiplier: 1.5, // Increased for better mouse scroll response
+        lerp: 0.12, // More responsive interpolation
         syncTouch: true,
-        syncTouchLerp: 0.05, // Smoother touch sync
-        touchInertiaMultiplier: 50, // Increased for better momentum
+        syncTouchLerp: 0.08, // Smoother touch sync
+        touchInertiaMultiplier: 40, // Balanced momentum
         autoRaf: true,
-        rafPriority: 1
+        rafPriority: 1,
+        // Desktop-specific optimizations
+        normalizeWheel: true,
+        gestureOrientationHandler: true,
+        touchInertia: 0.7
       });
 
       lenis.on('scroll', handleScroll);
@@ -226,19 +230,19 @@ const ScrollStack = ({
       const lenis = new Lenis({
         wrapper: scroller,
         content: scroller.querySelector('.scroll-stack-inner'),
-        duration: 1.8,
-        easing: t => 1 - Math.pow(1 - t, 3), // Cubic ease-out for smoother feel
+        duration: 1.2, // Faster for desktop mouse scroll
+        easing: t => 1 - Math.pow(1 - t, 4), // Quartic ease-out for more responsive feel
         smoothWheel: true,
-        touchMultiplier: 1.5, // Reduced for smoother touch
+        touchMultiplier: 1.2, // Optimized for touch
         infinite: false,
         gestureOrientationHandler: true,
         normalizeWheel: true,
-        wheelMultiplier: 1.2,
-        touchInertiaMultiplier: 50, // Increased for better momentum
-        lerp: 0.08, // Smoother interpolation
+        wheelMultiplier: 1.5, // Increased for better mouse scroll response
+        touchInertiaMultiplier: 40, // Balanced momentum
+        lerp: 0.12, // More responsive interpolation
         syncTouch: true,
-        syncTouchLerp: 0.05, // Smoother touch sync
-        touchInertia: 0.8, // Increased for better momentum
+        syncTouchLerp: 0.08, // Smoother touch sync
+        touchInertia: 0.7, // Balanced momentum
         autoRaf: true,
         rafPriority: 1
       });
