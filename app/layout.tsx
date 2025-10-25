@@ -25,6 +25,21 @@ export default function RootLayout({
         <link rel="icon" href="/icon" />
         <link rel="apple-touch-icon" href="/apple-icon" />
         <meta name="theme-color" content="#3b82f6" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            * {
+              -webkit-overflow-scrolling: touch;
+              overscroll-behavior: none;
+            }
+            body {
+              touch-action: pan-y;
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              user-select: none;
+            }
+          `
+        }} />
       </head>
       <body className={spaceGrotesk.className}>
         <PasswordProtection>
