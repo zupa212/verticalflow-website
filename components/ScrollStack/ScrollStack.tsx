@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useLayoutEffect, useRef, useCallback } from 'react';
+import React, { ReactNode, useLayoutEffect, useRef, useCallback, useEffect } from 'react';
 import './ScrollStack.css';
 
 export interface ScrollStackItemProps {
@@ -28,6 +28,13 @@ interface ScrollStackProps {
   onStackComplete?: () => void;
 }
 
+// Type for Lenis constructor
+type LenisCtor = new (opts?: any) => {
+  raf: (time: number) => void;
+  destroy: () => void;
+  on: (event: string, callback: () => void) => void;
+};
+
 const ScrollStack: React.FC<ScrollStackProps> = ({
   children,
   className = '',
@@ -46,9 +53,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const stackCompletedRef = useRef(false);
   const animationFrameRef = useRef<number | null>(null);
+  const lenisRef = useRef<InstanceType<LenisCtor> | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
   const lastTransformsRef = useRef(new Map<number, any>());
   const isUpdatingRef = useRef(false);
+  const mountedRef = useRef(true);
 
   const calculateProgress = useCallback((scrollTop: number, start: number, end: number) => {
     if (scrollTop < start) return 0;
@@ -93,7 +102,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   );
 
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || isUpdatingRef.current) return;
+    if (!cardsRef.current.length || isUpdatingRef.current || !mountedRef.current) return;
 
     isUpdatingRef.current = true;
 
@@ -108,6 +117,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const endElementTop = endElement ? getElementOffset(endElement as HTMLElement) : 0;
 
     requestAnimationFrame(() => {
+      if (!mountedRef.current) return;
+
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
@@ -211,6 +222,65 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     });
   }, [updateCardTransforms]);
 
+  // Initialize Lenis with lazy import
+  useEffect(() => {
+    let mounted = true;
+    mountedRef.current = true;
+
+    // Lazy import Lenis only on client
+    import('@studio-freight/lenis')
+      .then((mod) => {
+        if (!mounted || !mountedRef.current) return;
+        
+        const Lenis = (mod.default || mod) as LenisCtor;
+
+        // Initialize Lenis with safe defaults
+        const lenis = new Lenis({
+          duration: 1.1,
+          easing: (t) => 1 - Math.pow(1 - t, 3),
+          smoothWheel: true,
+          touchMultiplier: 1.5,
+          infinite: false,
+          wheelMultiplier: 1.2,
+          lerp: 0.08,
+          syncTouch: true,
+          syncTouchLerp: 0.05,
+          gestureOrientation: 'vertical',
+          touchInertiaMultiplier: 60,
+          smoothTouch: true
+        });
+
+        lenis.on('scroll', handleScroll);
+        lenisRef.current = lenis;
+
+        const raf = (time: number) => {
+          if (!mounted || !mountedRef.current) return;
+          lenis.raf(time);
+          animationFrameRef.current = requestAnimationFrame(raf);
+        };
+        animationFrameRef.current = requestAnimationFrame(raf);
+      })
+      .catch((err) => {
+        // Graceful fallback: continue without smooth scroll
+        console.error('Lenis failed to load:', err);
+      });
+
+    return () => {
+      mounted = false;
+      mountedRef.current = false;
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (lenisRef.current) {
+        try {
+          lenisRef.current.destroy();
+        } catch (e) {
+          // Ignore cleanup errors
+        }
+      }
+    };
+  }, [handleScroll]);
+
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
@@ -237,17 +307,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.webkitPerspective = '1000px';
     });
 
-    // Add native scroll listener instead of Lenis
-    const scrollElement = useWindowScroll ? window : scroller;
-    scrollElement.addEventListener('scroll', handleScroll, { passive: true });
-
     updateCardTransforms();
 
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      scrollElement.removeEventListener('scroll', handleScroll);
       stackCompletedRef.current = false;
       cardsRef.current = [];
       transformsCache.clear();
@@ -265,7 +330,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     blurAmount,
     useWindowScroll,
     onStackComplete,
-    handleScroll,
     updateCardTransforms
   ]);
 
