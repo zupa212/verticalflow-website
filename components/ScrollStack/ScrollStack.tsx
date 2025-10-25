@@ -203,21 +203,22 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
       const lenis = new Lenis({
-        duration: 1.0,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.2,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
         smoothWheel: true,
-        touchMultiplier: 1.0,
+        touchMultiplier: 1.5,
         infinite: false,
-        wheelMultiplier: 1,
-        lerp: 0.1,
+        wheelMultiplier: 1.2,
+        lerp: 0.08,
         syncTouch: true,
-        syncTouchLerp: 0.1,
+        syncTouchLerp: 0.05,
         gestureOrientation: 'vertical',
         normalizeWheel: true,
-        touchInertiaMultiplier: 50,
+        touchInertiaMultiplier: 60,
         autoRaf: true,
         rafPriority: 1,
-        smoothTouch: true
+        smoothTouch: true,
+        wheelMultiplier: 1.1
       });
 
       lenis.on('scroll', handleScroll);
@@ -237,18 +238,18 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const lenis = new Lenis({
         wrapper: scroller,
         content: scroller.querySelector('.scroll-stack-inner') as HTMLElement,
-        duration: 1.0,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.2,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
         smoothWheel: true,
-        touchMultiplier: 1.0,
+        touchMultiplier: 1.5,
         infinite: false,
         gestureOrientation: 'vertical',
-        wheelMultiplier: 1,
-        lerp: 0.1,
+        wheelMultiplier: 1.2,
+        lerp: 0.08,
         syncTouch: true,
-        syncTouchLerp: 0.1,
+        syncTouchLerp: 0.05,
         normalizeWheel: true,
-        touchInertiaMultiplier: 50,
+        touchInertiaMultiplier: 60,
         autoRaf: true,
         rafPriority: 1,
         smoothTouch: true
