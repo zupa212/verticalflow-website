@@ -26,7 +26,7 @@ export function PasswordProtection({ children }: PasswordProtectionProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const correctPassword = 'verticalflow2024'; // Change this to your desired password
+    const correctPassword = 'verticalflow834'; // Change this to your desired password
     
     if (password === correctPassword) {
       setIsAuthenticated(true);
