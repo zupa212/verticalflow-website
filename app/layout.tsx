@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Space_Grotesk } from 'next/font/google';
 import { PasswordProtection } from '@/components/PasswordProtection';
+import { CornerAnimations } from '@/components/CornerAnimations';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
@@ -22,8 +23,8 @@ export default function RootLayout({
         <link rel="canonical" href="https://verticalflow.gr" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
-        <link rel="icon" href="/icon" />
-        <link rel="apple-touch-icon" href="/apple-icon" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#3b82f6" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
         <meta name="format-detection" content="telephone=no" />
@@ -79,12 +80,24 @@ export default function RootLayout({
                 -webkit-overflow-scrolling: touch;
               }
             }
+            
+            /* iPhone corner radius support */
+            .corner-animation {
+              border-radius: 47px;
+            }
+            
+            /* Safe area support for iPhone */
+            .corner-tl { top: env(safe-area-inset-top); left: env(safe-area-inset-left); }
+            .corner-tr { top: env(safe-area-inset-top); right: env(safe-area-inset-right); }
+            .corner-bl { bottom: env(safe-area-inset-bottom); left: env(safe-area-inset-left); }
+            .corner-br { bottom: env(safe-area-inset-bottom); right: env(safe-area-inset-right); }
           `
         }} />
       </head>
       <body className={spaceGrotesk.className}>
         <PasswordProtection>
           {children}
+          <CornerAnimations />
         </PasswordProtection>
         <script
           dangerouslySetInnerHTML={{
