@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { BlogParallax } from '@/components/BlogParallax';
 import { WavesSection } from '@/components/GradientBlindsSection';
-import { ScrollStack, ScrollStackItem } from '@/components/ScrollStack/ScrollStack';
+import ScrollStack, { ScrollStackItem } from '@/components/ScrollStack/ScrollStack';
 import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
