@@ -19,6 +19,29 @@
   will-change: auto;
 }
 
+/* ULTRA FAST SCROLL OPTIMIZATION */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+/* Scroll performance boost */
+.scroll-stack-card {
+  will-change: transform, filter;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 /* Framer Motion GPU Acceleration */
 [data-framer-motion] {
   -webkit-transform: translateZ(0);

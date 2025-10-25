@@ -102,9 +102,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   );
 
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || isUpdatingRef.current || !mountedRef.current) return;
-
-    isUpdatingRef.current = true;
+    if (!cardsRef.current.length || !mountedRef.current) return;
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
@@ -116,9 +114,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const endElementTop = endElement ? getElementOffset(endElement as HTMLElement) : 0;
 
-    // Remove requestAnimationFrame for immediate updates
-    if (!mountedRef.current) return;
-
+    // Direct updates without any delays
     cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
@@ -194,8 +190,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
           }
         }
       });
-
-      isUpdatingRef.current = false;
   }, [
     itemScale,
     itemStackDistance,
@@ -213,6 +207,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   ]);
 
   const handleScroll = useCallback(() => {
+    // Direct execution without any throttling
     updateCardTransforms();
   }, [updateCardTransforms]);
 
@@ -228,19 +223,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         
         const Lenis = (mod.default || mod) as LenisCtor;
 
-        // Initialize Lenis with optimized settings for speed and smoothness
+        // Initialize Lenis with MAXIMUM speed and responsiveness
         const lenis = new Lenis({
-          duration: 0.8,
-          easing: (t: number) => 1 - Math.pow(1 - t, 2),
+          duration: 0.3,
+          easing: (t: number) => t,
           smoothWheel: true,
-          touchMultiplier: 2.0,
+          touchMultiplier: 4.0,
           infinite: false,
-          wheelMultiplier: 2.5,
-          lerp: 0.15,
+          wheelMultiplier: 5.0,
+          lerp: 0.3,
           syncTouch: true,
-          syncTouchLerp: 0.1,
+          syncTouchLerp: 0.2,
           gestureOrientation: 'vertical',
-          touchInertiaMultiplier: 80,
+          touchInertiaMultiplier: 120,
           smoothTouch: true
         });
 

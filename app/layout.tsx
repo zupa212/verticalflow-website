@@ -100,6 +100,10 @@ export default function RootLayout({
               console.log('%cMade with ❤️ by XUPI', 'color: #3b82f6; font-size: 20px; font-weight: bold;');
               console.log('%cVerticalFlow Portfolio', 'color: #06b6d4; font-size: 16px;');
               console.log('%cNot affiliated with TerraCube or Lovable', 'color: #ef4444; font-size: 12px;');
+              
+              // Global smooth scroll optimization
+              document.documentElement.style.scrollBehavior = 'smooth';
+              document.body.style.overflowX = 'hidden';
             `,
           }}
         />
