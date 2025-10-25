@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import GradientBlinds from './Backgrounds/GradientBlinds';
+import Waves from './Waves';
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -16,23 +16,20 @@ export function Footer() {
 
   return (
     <footer className="relative bg-black overflow-hidden">
-      {/* Gradient Blinds Background */}
-      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
-        <GradientBlinds
-          gradientColors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
-          angle={0}
-          noise={0.1}
-          blindCount={12}
-          blindMinWidth={50}
-          spotlightRadius={0.5}
-          spotlightSoftness={1}
-          spotlightOpacity={1}
-          mouseDampening={0.15}
-          distortAmount={0}
-          shineDirection="left"
-          mixBlendMode="lighten"
-        />
-      </div>
+      {/* Waves Background */}
+      <Waves
+        lineColor="#3b82f6"
+        backgroundColor="transparent"
+        waveSpeedX={0.0125}
+        waveSpeedY={0.005}
+        waveAmpX={32}
+        waveAmpY={16}
+        xGap={10}
+        yGap={32}
+        friction={0.925}
+        tension={0.005}
+        maxCursorMove={100}
+      />
 
       {/* Footer Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
