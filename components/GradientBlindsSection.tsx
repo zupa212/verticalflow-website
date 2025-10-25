@@ -1,20 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GradientBlinds } from './Backgrounds/GradientBlinds';
+import GradientBlinds from './Backgrounds/GradientBlinds';
 
 export function GradientBlindsSection() {
   return (
     <section className="relative min-h-screen bg-black overflow-hidden">
       {/* Gradient Blinds Background */}
-      <GradientBlinds
-        colors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
-        speed={3}
-        opacity={0.4}
-        direction="horizontal"
-        count={6}
-        className="opacity-60"
-      />
+      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+        <GradientBlinds
+          gradientColors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
+          angle={0}
+          noise={0.3}
+          blindCount={12}
+          blindMinWidth={50}
+          spotlightRadius={0.5}
+          spotlightSoftness={1}
+          spotlightOpacity={1}
+          mouseDampening={0.15}
+          distortAmount={0}
+          shineDirection="left"
+          mixBlendMode="lighten"
+        />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center">

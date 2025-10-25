@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { GradientBlinds } from './Backgrounds/GradientBlinds';
+import GradientBlinds from './Backgrounds/GradientBlinds';
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -16,15 +16,23 @@ export function Footer() {
 
   return (
     <footer className="relative bg-black overflow-hidden">
-      {/* Gradient Blinds Background */}
-      <GradientBlinds
-        colors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
-        speed={3}
-        opacity={0.4}
-        direction="horizontal"
-        count={6}
-        className="opacity-60"
-      />
+          {/* Gradient Blinds Background */}
+          <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+            <GradientBlinds
+              gradientColors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
+              angle={0}
+              noise={0.3}
+              blindCount={12}
+              blindMinWidth={50}
+              spotlightRadius={0.5}
+              spotlightSoftness={1}
+              spotlightOpacity={1}
+              mouseDampening={0.15}
+              distortAmount={0}
+              shineDirection="left"
+              mixBlendMode="lighten"
+            />
+          </div>
       
       {/* Animated Prismatic Burst Background */}
       <div className="absolute inset-0 opacity-20">
