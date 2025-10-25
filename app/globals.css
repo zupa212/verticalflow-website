@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 120fps iPhone Optimization */
+/* 120fps iPhone Optimization - Framer Motion Optimized */
 * {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
@@ -16,6 +16,16 @@
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  will-change: auto;
+}
+
+/* Framer Motion GPU Acceleration */
+[data-framer-motion] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 html {
@@ -23,11 +33,14 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
   overflow-x: hidden;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
 }
 
 body {
