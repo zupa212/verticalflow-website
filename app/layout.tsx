@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Space_Grotesk } from 'next/font/google';
-import { PasswordProtection } from '@/components/PasswordProtection';
 import { CornerAnimations } from '@/components/CornerAnimations';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
@@ -95,10 +94,8 @@ export default function RootLayout({
         }} />
       </head>
       <body className={spaceGrotesk.className}>
-        <PasswordProtection>
-          {children}
-          <CornerAnimations />
-        </PasswordProtection>
+        {children}
+        <CornerAnimations />
         <script
           dangerouslySetInnerHTML={{
             __html: `
