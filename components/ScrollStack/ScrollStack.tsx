@@ -116,10 +116,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const endElementTop = endElement ? getElementOffset(endElement as HTMLElement) : 0;
 
-    requestAnimationFrame(() => {
-      if (!mountedRef.current) return;
+    // Remove requestAnimationFrame for immediate updates
+    if (!mountedRef.current) return;
 
-      cardsRef.current.forEach((card, i) => {
+    cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
         const cardTop = getElementOffset(card);
@@ -196,7 +196,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       });
 
       isUpdatingRef.current = false;
-    });
   }, [
     itemScale,
     itemStackDistance,
@@ -214,12 +213,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   ]);
 
   const handleScroll = useCallback(() => {
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
-    animationFrameRef.current = requestAnimationFrame(() => {
-      updateCardTransforms();
-    });
+    updateCardTransforms();
   }, [updateCardTransforms]);
 
   // Initialize Lenis with lazy import
@@ -234,19 +228,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         
         const Lenis = (mod.default || mod) as LenisCtor;
 
-        // Initialize Lenis with safe defaults
+        // Initialize Lenis with optimized settings for speed and smoothness
         const lenis = new Lenis({
-          duration: 1.1,
-          easing: (t: number) => 1 - Math.pow(1 - t, 3),
+          duration: 0.8,
+          easing: (t: number) => 1 - Math.pow(1 - t, 2),
           smoothWheel: true,
-          touchMultiplier: 1.5,
+          touchMultiplier: 2.0,
           infinite: false,
-          wheelMultiplier: 1.2,
-          lerp: 0.08,
+          wheelMultiplier: 2.5,
+          lerp: 0.15,
           syncTouch: true,
-          syncTouchLerp: 0.05,
+          syncTouchLerp: 0.1,
           gestureOrientation: 'vertical',
-          touchInertiaMultiplier: 60,
+          touchInertiaMultiplier: 80,
           smoothTouch: true
         });
 
