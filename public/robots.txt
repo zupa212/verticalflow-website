@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block old content that might compete
+Disallow: /old/
+Disallow: /terracube/
+Disallow: /agency/
+
+# Sitemap
+Sitemap: https://verticalflow.gr/sitemap.xml

@@ -19,11 +19,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="canonical" href="https://verticalflow.gr" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="icon" href="/icon" />
+        <link rel="apple-touch-icon" href="/apple-icon" />
+        <meta name="theme-color" content="#3b82f6" />
       </head>
       <body className={spaceGrotesk.className}>
         <PasswordProtection>
           {children}
         </PasswordProtection>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              console.log('%cMade with ❤️ by XUPI', 'color: #3b82f6; font-size: 20px; font-weight: bold;');
+              console.log('%cVerticalFlow Portfolio', 'color: #06b6d4; font-size: 16px;');
+              console.log('%cNot affiliated with TerraCube or Lovable', 'color: #ef4444; font-size: 12px;');
+            `,
+          }}
+        />
       </body>
     </html>
   );
