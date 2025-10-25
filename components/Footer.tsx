@@ -16,33 +16,22 @@ export function Footer() {
 
   return (
     <footer className="relative bg-black overflow-hidden">
-          {/* Gradient Blinds Background */}
-          <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
-            <GradientBlinds
-              gradientColors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
-              angle={0}
-              noise={0.3}
-              blindCount={12}
-              blindMinWidth={50}
-              spotlightRadius={0.5}
-              spotlightSoftness={1}
-              spotlightOpacity={1}
-              mouseDampening={0.15}
-              distortAmount={0}
-              shineDirection="left"
-              mixBlendMode="lighten"
-            />
-          </div>
-      
-      {/* Animated Prismatic Burst Background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00ff9d] via-purple-600 to-blue-600 animate-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-tl from-pink-500 via-yellow-500 to-[#00ff9d] animate-gradient-reverse" />
-        
-        {/* Animated Orbs */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#00ff9d] rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob" />
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-2000" />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-4000" />
+      {/* Gradient Blinds Background */}
+      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+        <GradientBlinds
+          gradientColors={['#3b82f6', '#06b6d4', '#8b5cf6', '#06b6d4', '#3b82f6', '#1d4ed8']}
+          angle={0}
+          noise={0.3}
+          blindCount={12}
+          blindMinWidth={50}
+          spotlightRadius={0.5}
+          spotlightSoftness={1}
+          spotlightOpacity={1}
+          mouseDampening={0.15}
+          distortAmount={0}
+          shineDirection="left"
+          mixBlendMode="lighten"
+        />
       </div>
 
       {/* Footer Content */}
@@ -261,49 +250,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* CSS Animations */}
-      <style jsx>{`
-        @keyframes gradient {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          25% { transform: translate(10%, 10%) rotate(90deg); }
-          50% { transform: translate(-10%, 10%) rotate(180deg); }
-          75% { transform: translate(-10%, -10%) rotate(270deg); }
-        }
-
-        @keyframes gradient-reverse {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          25% { transform: translate(-10%, -10%) rotate(-90deg); }
-          50% { transform: translate(10%, -10%) rotate(-180deg); }
-          75% { transform: translate(10%, 10%) rotate(-270deg); }
-        }
-
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -20px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(20px, 20px) scale(1.05); }
-        }
-
-        .animate-gradient {
-          animation: gradient 20s ease infinite;
-        }
-
-        .animate-gradient-reverse {
-          animation: gradient-reverse 20s ease infinite;
-        }
-
-        .animate-blob {
-          animation: blob 10s infinite;
-        }
-
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
     </footer>
   );
 }
