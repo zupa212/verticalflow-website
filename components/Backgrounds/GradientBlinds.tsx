@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 interface GradientBlindsProps {
   colors?: string[];
@@ -19,71 +19,51 @@ export const GradientBlinds: React.FC<GradientBlindsProps> = ({
   count = 6,
   className = ''
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Clear existing blinds
-    container.innerHTML = '';
-
-    // Create blinds
-    for (let i = 0; i < count; i++) {
-      const blind = document.createElement('div');
-      const colorIndex = i % colors.length;
-      const nextColorIndex = (i + 1) % colors.length;
-      
-      blind.style.position = 'absolute';
-      blind.style.top = '0';
-      blind.style.left = '0';
-      blind.style.width = '100%';
-      blind.style.height = '100%';
-      blind.style.background = `linear-gradient(${direction === 'horizontal' ? '90deg' : '0deg'}, ${colors[colorIndex]}${Math.floor(opacity * 255).toString(16).padStart(2, '0')}, ${colors[nextColorIndex]}${Math.floor(opacity * 255).toString(16).padStart(2, '0')})`;
-      blind.style.opacity = opacity.toString();
-      blind.style.transform = direction === 'horizontal' 
-        ? `translateX(${(i / count) * 100}%) scaleX(${1 / count})`
-        : `translateY(${(i / count) * 100}%) scaleY(${1 / count})`;
-      blind.style.transformOrigin = direction === 'horizontal' ? 'left center' : 'top center';
-      blind.style.animation = `gradientBlinds${direction} ${speed}s ease-in-out infinite`;
-      blind.style.animationDelay = `${(i / count) * speed}s`;
-      
-      container.appendChild(blind);
-    }
-
-    // Add CSS animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes gradientBlinds${direction} {
-        0%, 100% {
-          transform: ${direction === 'horizontal' 
-            ? `translateX(${(i / count) * 100}%) scaleX(${1 / count})` 
-            : `translateY(${(i / count) * 100}%) scaleY(${1 / count})`};
-          opacity: ${opacity};
-        }
-        50% {
-          transform: ${direction === 'horizontal' 
-            ? `translateX(${(i / count) * 100}%) scaleX(${1 / count * 1.2})` 
-            : `translateY(${(i / count) * 100}%) scaleY(${1 / count * 1.2})`};
-          opacity: ${opacity * 0.8};
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, [colors, speed, opacity, direction, count]);
-
   return (
-    <div
-      ref={containerRef}
-      className={`absolute inset-0 overflow-hidden ${className}`}
-      style={{
-        background: 'transparent',
-        pointerEvents: 'none'
-      }}
-    />
+    <div className={`absolute inset-0 overflow-hidden ${className}`}>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes gradientBlinds {
+            0%, 100% {
+              opacity: ${opacity};
+              transform: scale(1);
+            }
+            50% {
+              opacity: ${opacity * 0.8};
+              transform: scale(1.1);
+            }
+          }
+        `
+      }} />
+      
+      {Array.from({ length: count }, (_, i) => {
+        const colorIndex = i % colors.length;
+        const nextColorIndex = (i + 1) % colors.length;
+        const alpha = Math.floor(opacity * 255).toString(16).padStart(2, '0');
+        const color1 = colors[colorIndex] + alpha;
+        const color2 = colors[nextColorIndex] + alpha;
+        
+        return (
+          <div
+            key={i}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: `linear-gradient(${direction === 'horizontal' ? '90deg' : '0deg'}, ${color1}, ${color2})`,
+              transform: direction === 'horizontal' 
+                ? `translateX(${(i / count) * 100}%) scaleX(${1 / count})`
+                : `translateY(${(i / count) * 100}%) scaleY(${1 / count})`,
+              transformOrigin: direction === 'horizontal' ? 'left center' : 'top center',
+              animation: `gradientBlinds ${speed}s ease-in-out infinite`,
+              animationDelay: `${(i / count) * speed}s`,
+              pointerEvents: 'none'
+            }}
+          />
+        );
+      })}
+    </div>
   );
 };
