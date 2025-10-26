@@ -21,16 +21,16 @@ const projects: Project[] = [
   {
     id: 2,
     title: 'HOLMES PLACE',
-    category: 'Fitness & Wellness',
+    category: 'Fitness & Wellness / Personal Brand',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
     slug: 'holmes-place',
   },
   {
     id: 3,
-    title: 'COLUMBIA',
-    category: 'Lifestyle',
+    title: 'AUDI FRANKFURT',
+    category: 'Automotive & Cars',
     image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&q=80',
-    slug: 'columbia',
+    slug: 'audi-frankfurt',
   },
 ];
 
@@ -72,7 +72,7 @@ export function ProjectsGrid() {
                     />
                   </div>
                 ) : project.id === 3 ? (
-                  // COLUMBIA - Video Background - LARGER
+                  // AUDI FRANKFURT - Video Background - LARGER
                   <div className="w-full h-full flex items-center justify-center">
                     <iframe 
                       src="https://iframe.mediadelivery.net/embed/518087/2a2f0eec-a080-4771-9f31-76a1f7448c1a?autoplay=true&loop=true&muted=true&preload=true&responsive=true" 
