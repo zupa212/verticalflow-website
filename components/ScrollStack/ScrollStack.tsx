@@ -102,20 +102,23 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   );
 
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || !mountedRef.current) return;
+    if (!cardsRef.current.length || !mountedRef.current || isUpdatingRef.current) return;
+    
+    isUpdatingRef.current = true;
+    requestAnimationFrame(() => {
+      if (!mountedRef.current) return;
 
-    const { scrollTop, containerHeight } = getScrollData();
-    const stackPositionPx = parsePercentage(stackPosition, containerHeight);
-    const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
+      const { scrollTop, containerHeight } = getScrollData();
+      const stackPositionPx = parsePercentage(stackPosition, containerHeight);
+      const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
 
-    const endElement = useWindowScroll
-      ? document.querySelector('.scroll-stack-end')
-      : scrollerRef.current?.querySelector('.scroll-stack-end');
+      const endElement = useWindowScroll
+        ? document.querySelector('.scroll-stack-end')
+        : scrollerRef.current?.querySelector('.scroll-stack-end');
 
-    const endElementTop = endElement ? getElementOffset(endElement as HTMLElement) : 0;
+      const endElementTop = endElement ? getElementOffset(endElement as HTMLElement) : 0;
 
-    // Direct updates without any delays
-    cardsRef.current.forEach((card, i) => {
+      cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
         const cardTop = getElementOffset(card);
@@ -190,6 +193,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
           }
         }
       });
+      
+      isUpdatingRef.current = false;
+    });
   }, [
     itemScale,
     itemStackDistance,
@@ -223,19 +229,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         
         const Lenis = (mod.default || mod) as LenisCtor;
 
-        // Initialize Lenis with MAXIMUM speed and responsiveness
+        // Initialize Lenis with CONTINUOUS and SMOOTH scrolling
         const lenis = new Lenis({
-          duration: 0.3,
-          easing: (t: number) => t,
+          duration: 1.2,
+          easing: (t: number) => 1 - Math.pow(1 - t, 3),
           smoothWheel: true,
-          touchMultiplier: 4.0,
+          touchMultiplier: 1.5,
           infinite: false,
-          wheelMultiplier: 5.0,
-          lerp: 0.3,
+          wheelMultiplier: 1,
+          lerp: 0.1,
           syncTouch: true,
-          syncTouchLerp: 0.2,
+          syncTouchLerp: 0.08,
           gestureOrientation: 'vertical',
-          touchInertiaMultiplier: 120,
+          touchInertiaMultiplier: 40,
           smoothTouch: true
         });
 
