@@ -14,65 +14,23 @@ const projects: Project[] = [
   {
     id: 1,
     title: 'CENTRAL VIP',
-    category: 'Reels & Ads',
+    category: 'Automotive & Cars',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
     slug: 'central-vip',
   },
   {
     id: 2,
-    title: 'KING BARBERSHOP',
-    category: 'Social Media Reels',
-    image: 'https://images.unsplash.com/photo-1529369656566-c3d66ab9866b?w=1200&q=80',
-    slug: 'king-barbershop',
+    title: 'HOLMES PLACE',
+    category: 'Fitness & Wellness',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
+    slug: 'holmes-place',
   },
   {
     id: 3,
-    title: 'BARBERS OF THE NORTH',
-    category: 'Website & Reels',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80',
-    slug: 'barbers-of-the-north',
-  },
-  {
-    id: 4,
-    title: 'EAZYPEN',
-    category: 'Video Production',
-    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80',
-    slug: 'eazypen',
-  },
-  {
-    id: 5,
-    title: 'GOJACK',
-    category: 'Reels & Content',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80',
-    slug: 'gojack',
-  },
-  {
-    id: 6,
-    title: 'FOTIS TRADER',
-    category: 'Personal Brand Reels',
-    image: 'https://images.unsplash.com/photo-1620658502571-b75d27d25922?w=1200&q=80',
-    slug: 'fotis-trader',
-  },
-  {
-    id: 7,
-    title: 'BY PHAO',
-    category: 'Full Website',
-    image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80',
-    slug: 'by-phao',
-  },
-  {
-    id: 8,
-    title: '414 CLOTHING',
-    category: 'eCommerce & 3D',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80',
-    slug: '414-clothing',
-  },
-  {
-    id: 9,
-    title: 'TSIOUPLIS RENTALS',
-    category: 'Car Rental Website',
-    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&q=80',
-    slug: 'tsiouplis-rentals',
+    title: 'COLUMBIA',
+    category: 'Lifestyle',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&q=80',
+    slug: 'columbia',
   },
 ];
 
@@ -81,7 +39,7 @@ export function ProjectsGrid() {
     <section className="relative py-24 lg:py-32 bg-black">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {/* Project Cards */}
           {projects.map((project) => (
             <Link

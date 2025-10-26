@@ -19,62 +19,92 @@ const projects: Project[] = [
   {
     id: 1,
     title: 'CENTRAL VIP',
-    category: 'Automotive & Cars',
-    description: 'Complete brand identity and digital presence for luxury automotive dealership. Featuring premium video content and sophisticated web design.',
+    category: 'Reels & Ads',
+    description: 'Luxury car rentals - Complete video production with engaging Reels and targeted ads for high-end automotive rental services.',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
     slug: 'central-vip',
     year: '2024',
-    services: ['Brand Identity', 'Video Production', 'Web Development', 'Digital Marketing']
+    services: ['Video Production', 'Social Media Reels', 'Digital Ads', 'Brand Content']
   },
   {
     id: 2,
-    title: 'HOLMES PLACE',
-    category: 'Fitness & Wellness',
-    description: 'Comprehensive fitness brand strategy with modern visual identity and engaging content creation for premium health clubs.',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
-    slug: 'holmes-place',
+    title: 'KING BARBERSHOP',
+    category: 'Social Media Reels',
+    description: 'Barbershop social media strategy with viral Reels, short-form content, and professional webpage development.',
+    image: 'https://images.unsplash.com/photo-1529369656566-c3d66ab9866b?w=1200&q=80',
+    slug: 'king-barbershop',
     year: '2024',
-    services: ['Brand Strategy', 'Visual Identity', 'Content Creation', 'Social Media']
+    services: ['Social Media Reels', 'Short-form Content', 'Web Development', 'SEO Setup']
   },
   {
     id: 3,
-    title: 'COLUMBIA',
-    category: 'Lifestyle',
-    description: 'Lifestyle brand development with focus on outdoor adventure and sustainable living. Complete digital ecosystem implementation.',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&q=80',
-    slug: 'columbia',
-    year: '2023',
-    services: ['Brand Development', 'E-commerce', 'Content Strategy', 'Influencer Marketing']
+    title: 'BARBERS OF THE NORTH',
+    category: 'Website & Reels',
+    description: 'Complete booking management system with engaging Reels content and advanced SEO optimization for barbershop business.',
+    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80',
+    slug: 'barbers-of-the-north',
+    year: '2024',
+    services: ['Website Development', 'Booking System', 'Reels Content', 'SEO Optimization']
   },
   {
     id: 4,
-    title: 'TECHNOVATION',
-    category: 'Technology',
-    description: 'Cutting-edge tech startup branding with modern aesthetics and innovative digital solutions for the future of work.',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&q=80',
-    slug: 'technovation',
+    title: 'EAZYPEN',
+    category: 'Video Production',
+    description: 'Academic writing platform - Comprehensive video production showcasing the 3-step process for finding professional writers.',
+    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80',
+    slug: 'eazypen',
     year: '2024',
-    services: ['Brand Identity', 'UI/UX Design', 'Web Development', 'Digital Strategy']
+    services: ['Video Production', 'Content Strategy', 'Brand Storytelling', 'Digital Marketing']
   },
   {
     id: 5,
-    title: 'GREEN EARTH',
-    category: 'Sustainability',
-    description: 'Environmental brand focused on sustainable living and eco-friendly products. Complete green marketing strategy implementation.',
-    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80',
-    slug: 'green-earth',
-    year: '2023',
-    services: ['Brand Strategy', 'Visual Identity', 'Content Creation', 'Digital Marketing']
+    title: 'GOJACK',
+    category: 'Reels & Content',
+    description: 'Company formation services abroad - Professional Reels and content creation for international business setup services.',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80',
+    slug: 'gojack',
+    year: '2024',
+    services: ['Reels Content', 'Content Strategy', 'Brand Development', 'Digital Presence']
   },
   {
     id: 6,
-    title: 'FASHION HUB',
-    category: 'Fashion',
-    description: 'Premium fashion brand with luxury positioning and sophisticated digital presence. High-end visual content and e-commerce solutions.',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80',
-    slug: 'fashion-hub',
+    title: 'FOTIS TRADER',
+    category: 'Personal Brand Reels',
+    description: 'Finance and education content creator - Professional Personal Brand Reels focusing on trading and financial education.',
+    image: 'https://images.unsplash.com/photo-1620658502571-b75d27d25922?w=1200&q=80',
+    slug: 'fotis-trader',
     year: '2024',
-    services: ['Brand Identity', 'E-commerce', 'Content Creation', 'Social Media']
+    services: ['Personal Branding', 'Reels Strategy', 'Content Creation', 'Social Media']
+  },
+  {
+    id: 7,
+    title: 'BY PHAO',
+    category: 'Full Website',
+    description: 'Chef & Private Dining - Complete website and brand identity for luxury private dining experiences and culinary events.',
+    image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80',
+    slug: 'by-phao',
+    year: '2024',
+    services: ['Full Website', 'Brand Identity', 'UI/UX Design', 'Digital Strategy']
+  },
+  {
+    id: 8,
+    title: '414 CLOTHING',
+    category: 'eCommerce & 3D',
+    description: 'Fashion brand - Shopify 3D eCommerce setup with creative direction and immersive shopping experiences.',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80',
+    slug: '414-clothing',
+    year: '2024',
+    services: ['Shopify Setup', '3D eCommerce', 'Creative Direction', 'Brand Development']
+  },
+  {
+    id: 9,
+    title: 'TSIOUPLIS RENTALS',
+    category: 'Car Rental Website',
+    description: 'Car rental platform - Complete booking system with Stripe integration and comprehensive car rental management.',
+    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&q=80',
+    slug: 'tsiouplis-rentals',
+    year: '2024',
+    services: ['Website Development', 'Booking System', 'Stripe Integration', 'SEO Setup']
   }
 ];
 
