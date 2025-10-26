@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { BlogParallax } from '@/components/BlogParallax';
 import { WavesSection } from '@/components/GradientBlindsSection';
-import ScrollStack, { ScrollStackItem } from '@/components/ScrollStack/ScrollStack';
 import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
@@ -240,86 +239,94 @@ export default function HomePage() {
       {/* Projects Grid Section */}
       <ProjectsGrid />
 
-          {/* Process Steps Section - ScrollStack */}
-          <section className="relative py-24 lg:py-32 bg-black">
-            <div className="max-w-7xl mx-auto px-6 lg:px-12">
-              <ScrollStack 
-                useWindowScroll={true} 
-                itemDistance={200} 
-                itemStackDistance={60}
-                itemScale={0.04}
-                baseScale={0.8}
-                stackPosition="25%"
-                scaleEndPosition="15%"
-                rotationAmount={0}
-                blurAmount={0}
-              >
-                <ScrollStackItem>
-                  <div className="min-h-screen bg-gradient-to-br from-purple-900/90 to-purple-700/90 rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-0">
-                      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" alt="Brand Strategy" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 to-purple-700/90" />
-                    </div>
-                    <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
-                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
-                        <span className="text-2xl font-black text-blue-400">01</span>
-                      </div>
-                      <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Brand Strategy</h3>
-                      <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">We develop comprehensive brand strategies that position your business for long-term success in competitive markets.</p>
-                    </div>
-                  </div>
-                </ScrollStackItem>
-
-                <ScrollStackItem>
-                  <div className="min-h-screen bg-gradient-to-br from-blue-900/90 to-blue-700/90 rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-0">
-                      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80" alt="Visual Identity" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-700/90" />
-                    </div>
-                    <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
-                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
-                        <span className="text-2xl font-black text-blue-400">02</span>
-                      </div>
-                      <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Visual Identity</h3>
-                      <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">Create stunning visual identities that capture your brand essence and resonate with your target audience.</p>
-                    </div>
-                  </div>
-                </ScrollStackItem>
-
-                <ScrollStackItem>
-                  <div className="min-h-screen bg-gradient-to-br from-emerald-900/90 to-emerald-700/90 rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-0">
-                      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Digital Presence" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 to-emerald-700/90" />
-                    </div>
-                    <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
-                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
-                        <span className="text-2xl font-black text-blue-400">03</span>
-                      </div>
-                      <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Digital Presence</h3>
-                      <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">Build powerful digital experiences that engage users and drive measurable business results.</p>
-                    </div>
-                  </div>
-                </ScrollStackItem>
-
-                <ScrollStackItem>
-                  <div className="min-h-screen bg-gradient-to-br from-orange-900/90 to-orange-700/90 rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-0">
-                      <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80" alt="Content Creation" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-orange-900/90 to-orange-700/90" />
-                    </div>
-                    <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
-                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
-                        <span className="text-2xl font-black text-blue-400">04</span>
-                      </div>
-                      <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Content Creation</h3>
-                      <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">Produce compelling content that tells your story and connects with your audience on every platform.</p>
-                    </div>
-                  </div>
-                </ScrollStackItem>
-              </ScrollStack>
+      {/* Process Steps Section */}
+      <section className="relative py-24 lg:py-32 bg-black">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-24">
+          {/* Step 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="min-h-screen bg-gradient-to-br from-purple-900/90 to-purple-700/90 rounded-3xl overflow-hidden relative"
+          >
+            <div className="absolute inset-0">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" alt="Brand Strategy" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 to-purple-700/90" />
             </div>
-          </section>
+            <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
+                <span className="text-2xl font-black text-blue-400">01</span>
+              </div>
+              <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Brand Strategy</h3>
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">We develop comprehensive brand strategies that position your business for long-term success in competitive markets.</p>
+            </div>
+          </motion.div>
+
+          {/* Step 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="min-h-screen bg-gradient-to-br from-blue-900/90 to-blue-700/90 rounded-3xl overflow-hidden relative"
+          >
+            <div className="absolute inset-0">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80" alt="Visual Identity" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-700/90" />
+            </div>
+            <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
+                <span className="text-2xl font-black text-blue-400">02</span>
+              </div>
+              <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Visual Identity</h3>
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">Create stunning visual identities that capture your brand essence and resonate with your target audience.</p>
+            </div>
+          </motion.div>
+
+          {/* Step 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="min-h-screen bg-gradient-to-br from-emerald-900/90 to-emerald-700/90 rounded-3xl overflow-hidden relative"
+          >
+            <div className="absolute inset-0">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Digital Presence" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 to-emerald-700/90" />
+            </div>
+            <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
+                <span className="text-2xl font-black text-blue-400">03</span>
+              </div>
+              <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Digital Presence</h3>
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">Build powerful digital experiences that engage users and drive measurable business results.</p>
+            </div>
+          </motion.div>
+
+          {/* Step 4 */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="min-h-screen bg-gradient-to-br from-orange-900/90 to-orange-700/90 rounded-3xl overflow-hidden relative"
+          >
+            <div className="absolute inset-0">
+              <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80" alt="Content Creation" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-900/90 to-orange-700/90" />
+            </div>
+            <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20 border-2 border-blue-400 mb-6">
+                <span className="text-2xl font-black text-blue-400">04</span>
+              </div>
+              <h3 className="text-5xl lg:text-7xl font-black text-white mb-6 tracking-tight">Content Creation</h3>
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">Produce compelling content that tells your story and connects with your audience on every platform.</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Blog Parallax Section */}
       <BlogParallax />
