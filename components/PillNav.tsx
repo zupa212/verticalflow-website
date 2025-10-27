@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export type PillNavItem = {
   label: string;
@@ -28,9 +27,6 @@ const PillNav: React.FC<PillNavProps> = ({
   hoveredPillTextColor = '#ffffff',
   pillTextColor = '#000000',
 }) => {
-  const { scrollY } = useScroll();
-  const navOpacity = useTransform(scrollY, [0, 100], [0, 1]);
-
   const cssVars = {
     ['--base']: baseColor,
     ['--pill-bg']: pillColor,
@@ -41,10 +37,10 @@ const PillNav: React.FC<PillNavProps> = ({
   return (
     <motion.nav 
       className={`pill-nav-container ${className}`}
-      style={{ 
-        opacity: navOpacity,
-        ...cssVars 
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      style={{ ...cssVars }}
     >
       <div className="pill-nav">
         {/* Circular Logo - Left */}
