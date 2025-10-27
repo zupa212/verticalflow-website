@@ -60,7 +60,7 @@ function VideoCard({ project }: { project: Project }) {
     return () => observer.disconnect();
   }, []);
 
-  // Get video iframe URL based on project (optimized for iPhone Safari power saving mode)
+  // Get video iframe URL based on project (always muted for autoplay)
   const getVideoUrl = (projectId: number) => {
     const baseUrl = "https://iframe.mediadelivery.net/embed/518087/";
     const videos: { [key: number]: string } = {
@@ -68,7 +68,7 @@ function VideoCard({ project }: { project: Project }) {
       2: "089f6cd5-ba00-4b0b-8cd4-c113446061c5", // HOLMES PLACE
       3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
     };
-    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=auto&responsive=true&quality=720p&playsinline=1&bypass=true`;
+    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p`;
   };
 
   return (
@@ -82,23 +82,15 @@ function VideoCard({ project }: { project: Project }) {
         {project.id === 1 || project.id === 2 || project.id === 3 ? (
           // Video Background with Lazy Loading - Iframe
           <div className="w-full h-full flex items-center justify-center">
-            {isVisible ? (
-              <iframe 
-                src={getVideoUrl(project.id)} 
-                loading="eager" 
-                className="w-[130%] h-[130%] border-0 scale-110" 
-                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-                allowFullScreen={true}
-                playsInline={true}
-                webkit-playsinline="true"
-                preload="auto"
-                style={{ 
-                  pointerEvents: 'auto',
-                  WebkitPowerSavingMode: 'disabled',
-                  willChange: 'contents'
-                }}
-              />
-            ) : (
+                  {isVisible ? (
+                    <iframe
+                      src={getVideoUrl(project.id)}
+                      loading="lazy"
+                      className="w-[130%] h-[130%] border-0 scale-110"
+                      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                      allowFullScreen={true}
+                    />
+                  ) : (
               // Placeholder image before video loads
               <img
                 src={project.image}

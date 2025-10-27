@@ -268,25 +268,10 @@ iframe {
   transition: opacity 0.01s;
 }
 
-/* Force hardware acceleration */
-iframe[allow="autoplay"] {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
-}
-
-/* Prevent Safari from throttling videos in power saving mode */
-@media (prefers-reduced-motion: no-preference) {
-  iframe {
-    animation: keep-active 60s infinite linear;
-  }
-}
-
-@keyframes keep-active {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.999; }
+/* Force hardware acceleration - simplified */
+iframe {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* iOS specific video optimizations */
