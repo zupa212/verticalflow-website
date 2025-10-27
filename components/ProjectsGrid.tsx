@@ -50,10 +50,10 @@ export function ProjectsGrid() {
               {/* Background Video/Image */}
               <div className="absolute inset-0">
                 {project.id === 1 ? (
-                  // CENTRAL VIP - Video Background - LARGER
+                  // CENTRAL VIP - Video Background - 1080P QUALITY
                   <div className="w-full h-full flex items-center justify-center">
                     <iframe 
-                      src="https://iframe.mediadelivery.net/embed/518087/a432aa81-5f88-4af7-8578-6b012a44e64b?autoplay=true&loop=true&muted=true&preload=true&responsive=true" 
+                      src="https://iframe.mediadelivery.net/embed/518087/a432aa81-5f88-4af7-8578-6b012a44e64b?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
                       loading="lazy" 
                       className="w-[130%] h-[130%] border-0 scale-110" 
                       allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
@@ -61,10 +61,10 @@ export function ProjectsGrid() {
                     />
                   </div>
                 ) : project.id === 2 ? (
-                  // HOLMES PLACE - Video Background - LARGER
+                  // HOLMES PLACE - Video Background - 1080P QUALITY
                   <div className="w-full h-full flex items-center justify-center">
                     <iframe 
-                      src="https://iframe.mediadelivery.net/embed/518087/089f6cd5-ba00-4b0b-8cd4-c113446061c5?autoplay=true&loop=true&muted=true&preload=true&responsive=true" 
+                      src="https://iframe.mediadelivery.net/embed/518087/089f6cd5-ba00-4b0b-8cd4-c113446061c5?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
                       loading="lazy" 
                       className="w-[130%] h-[130%] border-0 scale-110" 
                       allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
@@ -72,10 +72,10 @@ export function ProjectsGrid() {
                     />
                   </div>
                 ) : project.id === 3 ? (
-                  // AUDI FRANKFURT - Video Background - LARGER
+                  // AUDI FRANKFURT - Video Background - 1080P QUALITY
                   <div className="w-full h-full flex items-center justify-center">
                     <iframe 
-                      src="https://iframe.mediadelivery.net/embed/518087/2a2f0eec-a080-4771-9f31-76a1f7448c1a?autoplay=true&loop=true&muted=true&preload=true&responsive=true" 
+                      src="https://iframe.mediadelivery.net/embed/518087/2a2f0eec-a080-4771-9f31-76a1f7448c1a?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
                       loading="lazy" 
                       className="w-[130%] h-[130%] border-0 scale-110" 
                       allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
