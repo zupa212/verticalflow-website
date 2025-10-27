@@ -9,11 +9,16 @@ import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { BlogParallax } from '@/components/BlogParallax';
 import { WavesSection } from '@/components/GradientBlindsSection';
 import { Footer } from '@/components/Footer';
+import PillNav from '@/components/PillNav';
+import '@/components/PillNav.css';
 
 export default function HomePage() {
-  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const { scrollY } = useScroll();
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Calculate opacity based on scroll (0 at top, 1 after 100px)
+  const navOpacity = useTransform(scrollY, [0, 100], [0, 1]);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -24,61 +29,20 @@ export default function HomePage() {
 
   return (
     <div className="bg-black text-white min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-              <span className="text-black font-black text-xs tracking-wider" style={{writingMode: 'vertical-rl', textOrientation: 'mixed'}}>VERTICAL</span>
-            </div>
-          </Link>
-
-          {/* Navigation Links */}
-          <div className="hidden lg:flex items-center gap-8">
-            <div className="relative">
-          <button 
-                className="flex items-center gap-1 text-white/80 hover:text-white transition-colors text-sm font-medium"
-                onMouseEnter={() => setIsProjectsOpen(true)}
-                onMouseLeave={() => setIsProjectsOpen(false)}
-          >
-                Projects
-                <ChevronDown className={`w-4 h-4 transition-transform ${isProjectsOpen ? 'rotate-180' : ''}`} />
-          </button>
-              {isProjectsOpen && (
-                <div 
-                  className="absolute top-full left-0 mt-2 bg-[#1a1a1a] rounded-lg border border-white/10 shadow-xl py-2 min-w-[200px]"
-                  onMouseEnter={() => setIsProjectsOpen(true)}
-                  onMouseLeave={() => setIsProjectsOpen(false)}
-                >
-                  <Link href="/projects/branding" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 transition-colors">
-                    Branding
-                  </Link>
-                  <Link href="/projects/video" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 transition-colors">
-                    Video Production
-                  </Link>
-                  <Link href="/projects/web" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 transition-colors">
-                    Web Development
-          </Link>
-        </div>
-              )}
-        </div>
-            <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm font-medium">
-              Blog
-            </Link>
-                  <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 text-sm font-bold tracking-wide transition-all duration-300 hover:scale-105">
-                    GET IN TOUCH
-                  </Button>
-      </div>
-
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden text-white p-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </nav>
+      {/* Modern Pill Navigation */}
+      <PillNav
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'About', href: '#about' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'Contact', href: '#contact' }
+        ]}
+        activeHref="/"
+        baseColor="#ffffff"
+        pillColor="#ffffff"
+        pillTextColor="#000000"
+        hoveredPillTextColor="#ffffff"
+      />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
