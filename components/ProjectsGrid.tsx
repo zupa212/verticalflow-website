@@ -64,7 +64,7 @@ function VideoCard({ project }: { project: Project }) {
 
   // Get video URLs based on project
   const getVideoData = (projectId: number) => {
-    const videos = {
+    const videos: { [key: number]: { hls: string; poster: string } } = {
       1: {
         hls: "https://vz-01468b22-0f0.b-cdn.net/a432aa81-5f88-4af7-8578-6b012a44e64b/playlist.m3u8",
         poster: "https://vz-01468b22-0f0.b-cdn.net/a432aa81-5f88-4af7-8578-6b012a44e64b/thumbnail.jpg"
