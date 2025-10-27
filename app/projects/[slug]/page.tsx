@@ -58,6 +58,142 @@ const projects = {
     impact: 'Enhanced brand perception and increased brand awareness.',
     technologies: ['Cinematic Videography', 'Post-Production', 'Color Grading'],
   },
+  'king-barbershop': {
+    id: 4,
+    title: 'KING BARBERSHOP',
+    category: 'Reels & Short-form Content',
+    description: 'Social media reels and short-form video content for a premium barbershop brand.',
+    year: '2024',
+    services: ['Social Media Reels', 'Video Production', 'Short-form Content', 'Content Strategy'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1622296242141-c3c3c6e66bb9?w=1200&q=80',
+      'https://images.unsplash.com/photo-1607252650355-f7fd14a4d6ab?w=1200&q=80',
+    ],
+    challenge: 'Creating authentic, engaging content for a modern barbershop to attract clientele.',
+    solution: 'Developed a series of viral-worthy reels showcasing services, style, and atmosphere.',
+    impact: 'Increased followers and walk-in customers through engaging visual content.',
+    technologies: ['Video Production', 'Motion Graphics', 'Social Media Strategy'],
+  },
+  'barbers-of-the-north': {
+    id: 5,
+    title: 'BARBERS OF THE NORTH',
+    category: 'Website & Booking System',
+    description: 'Complete website with booking system and SEO setup for a barbershop.',
+    year: '2024',
+    services: ['Website Design', 'Booking System', 'SEO Setup', 'Reels Content'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=80',
+      'https://images.unsplash.com/photo-1607252650355-f7fd14a4d6ab?w=1200&q=80',
+    ],
+    challenge: 'Building a modern booking system that converts visitors into customers.',
+    solution: 'Developed a seamless website with integrated booking and appointment management.',
+    impact: 'Streamlined operations and increased online bookings significantly.',
+    technologies: ['Next.js', 'Booking API', 'SEO Optimization', 'Responsive Design'],
+  },
+  'eazypen': {
+    id: 6,
+    title: 'EAZYPEN',
+    category: 'Platform & Marketplace',
+    description: 'Writer marketplace platform connecting students with professional writers for academic assistance.',
+    year: '2023',
+    services: ['Platform Development', 'Marketplace Design', 'User Management', 'Payment Integration'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+      'https://images.unsplash.com/photo-1451187580459-434902a88922?w=1200&q=80',
+    ],
+    challenge: 'Creating a trusted marketplace platform for academic writing services with secure transactions.',
+    solution: 'Built a comprehensive platform with user verification, secure payments, and review systems.',
+    impact: 'Connected thousands of students with qualified writers, improving success rate.',
+    technologies: ['Full Stack Development', 'Payment Gateway', 'User Authentication', 'Database Management'],
+  },
+  'gojack': {
+    id: 7,
+    title: 'GOJACK',
+    category: 'Business Services & Website',
+    description: 'Company registration services for businesses expanding abroad.',
+    year: '2024',
+    services: ['Website Design', 'Service Presentation', 'SEO Optimization', 'Brand Identity'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
+    ],
+    challenge: 'Building trust and credibility for international company registration services.',
+    solution: 'Created a professional, transparent platform showcasing services and success stories.',
+    impact: 'Increased inquiries and client acquisitions through professional presentation.',
+    technologies: ['Web Development', 'SEO', 'Content Strategy', 'Lead Generation'],
+  },
+  'fotis-trader': {
+    id: 8,
+    title: 'FOTIS TRADER',
+    category: 'Personal Branding',
+    description: 'Personal brand development with reels for finance and education content.',
+    year: '2024',
+    services: ['Personal Branding', 'Reels Content', 'Video Production', 'Social Media Strategy'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&q=80',
+      'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&q=80',
+    ],
+    challenge: 'Establishing authority and credibility in the finance education space.',
+    solution: 'Developed engaging educational reels that simplify complex financial concepts.',
+    impact: 'Built a loyal following and became a trusted educator in trading and finance.',
+    technologies: ['Video Editing', 'Motion Graphics', 'Content Planning', 'Social Media'],
+  },
+  'by-phao': {
+    id: 9,
+    title: 'BY PHAO',
+    category: 'Restaurant & Hospitality',
+    description: 'Full website and brand identity for a chef offering private dining experiences.',
+    year: '2024',
+    services: ['Full Website Design', 'Brand Identity', 'Photography Integration', 'Booking System'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
+      'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1200&q=80',
+    ],
+    challenge: 'Showcasing unique private dining experiences in a compelling, appetizing way.',
+    solution: 'Created an elegant brand and website with stunning food photography and easy booking.',
+    impact: 'Established a premium brand image and increased bookings significantly.',
+    technologies: ['Web Design', 'Brand Identity', 'Photography', 'UX/UI Design'],
+  },
+  '414-clothing': {
+    id: 10,
+    title: '414 CLOTHING',
+    category: 'eCommerce & Fashion',
+    description: 'Shopify 3D eCommerce setup with creative direction for a streetwear brand.',
+    year: '2024',
+    services: ['3D eCommerce Setup', 'Shopify Development', 'Creative Direction', 'Brand Identity'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=80',
+      'https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=80',
+    ],
+    challenge: 'Creating an immersive 3D shopping experience for streetwear.',
+    solution: 'Built an innovative Shopify store with 3D product visualization and interactive features.',
+    impact: 'Increased conversion rates and average order value through engaging 3D experiences.',
+    technologies: ['Shopify Plus', '3D Technology', 'Interactive Design', 'E-commerce'],
+  },
+  'tsiouplis-rentals': {
+    id: 11,
+    title: 'TSIOUPLIS RENTALS',
+    category: 'Automotive & Cars',
+    description: 'Car rental website with booking system and Stripe payment integration.',
+    year: '2024',
+    services: ['Website Design', 'Booking System', 'Stripe Integration', 'SEO Optimization'],
+    videoId: null,
+    gallery: [
+      'https://images.unsplash.com/photo-1492144534655-ae79c7c9eb30?w=1200&q=80',
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
+    ],
+    challenge: 'Streamlining the car rental booking process with secure online payments.',
+    solution: 'Developed a user-friendly platform with real-time availability and secure Stripe payments.',
+    impact: 'Improved booking conversion rates and reduced administrative overhead.',
+    technologies: ['Next.js', 'Stripe API', 'Booking System', 'Database Management'],
+  },
 };
 
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
@@ -80,14 +216,22 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
     <div className="bg-black text-white min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
+        {/* Video/Image Background */}
         <div className="absolute inset-0 z-0">
-          <iframe
-            src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p`}
-            className="w-full h-full border-0 object-cover"
-            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-            allowFullScreen={true}
-          />
+          {project.videoId ? (
+            <iframe
+              src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p`}
+              className="w-full h-full border-0 object-cover"
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+              allowFullScreen={true}
+            />
+          ) : (
+            <img
+              src={project.gallery[0]}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
 
         {/* Dark Overlay */}
