@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 interface Project {
   id: number;
@@ -34,6 +35,102 @@ const projects: Project[] = [
   },
 ];
 
+function VideoCard({ project }: { project: Project }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loader after 2.5 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
+      className="group relative aspect-[4/5] overflow-hidden rounded-2xl"
+    >
+      {/* Background Video/Image */}
+      <div className="absolute inset-0">
+        {project.id === 1 ? (
+          // CENTRAL VIP - Video Background - 1080P QUALITY
+          <div className="w-full h-full flex items-center justify-center">
+            <iframe 
+              src="https://iframe.mediadelivery.net/embed/518087/a432aa81-5f88-4af7-8578-6b012a44e64b?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
+              loading="lazy" 
+              className="w-[130%] h-[130%] border-0 scale-110" 
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
+              allowFullScreen={true}
+            />
+          </div>
+        ) : project.id === 2 ? (
+          // HOLMES PLACE - Video Background - 1080P QUALITY
+          <div className="w-full h-full flex items-center justify-center">
+            <iframe 
+              src="https://iframe.mediadelivery.net/embed/518087/089f6cd5-ba00-4b0b-8cd4-c113446061c5?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
+              loading="lazy" 
+              className="w-[130%] h-[130%] border-0 scale-110" 
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
+              allowFullScreen={true}
+            />
+          </div>
+        ) : project.id === 3 ? (
+          // AUDI FRANKFURT - Video Background - 1080P QUALITY
+          <div className="w-full h-full flex items-center justify-center">
+            <iframe 
+              src="https://iframe.mediadelivery.net/embed/518087/2a2f0eec-a080-4771-9f31-76a1f7448c1a?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
+              loading="lazy" 
+              className="w-[130%] h-[130%] border-0 scale-110" 
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
+              allowFullScreen={true}
+            />
+          </div>
+        ) : (
+          // Other projects - Image
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        )}
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70 group-hover:from-black/60 group-hover:to-black/80 transition-all duration-500" />
+      </div>
+
+      {/* Loading Animation Overlay - 2.5 seconds */}
+      {isLoading && (
+        <div className="absolute inset-0 z-50 bg-black/90 flex items-center justify-center transition-opacity duration-1000">
+          <div className="relative w-16 h-16">
+            {/* Animated spinner */}
+            <div className="absolute inset-0 border-4 border-blue-400/20 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"></div>
+          </div>
+        </div>
+      )}
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-between p-8 lg:p-10">
+        {/* Title */}
+        <h3 className="text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight group-hover:text-blue-400 transition-colors duration-300">
+          {project.title}
+        </h3>
+
+        {/* Category - Vertical Text */}
+        <div className="self-start">
+          <p className="text-xs lg:text-sm font-medium text-white/60 tracking-widest uppercase writing-mode-vertical transform rotate-180">
+            {project.category}
+          </p>
+        </div>
+      </div>
+
+      {/* Hover Effect - Blue Border */}
+      <div className="absolute inset-0 border-4 border-transparent group-hover:border-blue-400/50 rounded-2xl transition-all duration-300 pointer-events-none" />
+    </Link>
+  );
+}
+
 export function ProjectsGrid() {
   return (
     <section className="relative py-24 lg:py-32 bg-black">
@@ -42,76 +139,7 @@ export function ProjectsGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {/* Project Cards */}
           {projects.map((project) => (
-            <Link
-              key={project.id}
-              href={`/projects/${project.slug}`}
-              className="group relative aspect-[4/5] overflow-hidden rounded-2xl"
-            >
-              {/* Background Video/Image */}
-              <div className="absolute inset-0">
-                {project.id === 1 ? (
-                  // CENTRAL VIP - Video Background - 1080P QUALITY
-                  <div className="w-full h-full flex items-center justify-center">
-                    <iframe 
-                      src="https://iframe.mediadelivery.net/embed/518087/a432aa81-5f88-4af7-8578-6b012a44e64b?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
-                      loading="lazy" 
-                      className="w-[130%] h-[130%] border-0 scale-110" 
-                      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-                      allowFullScreen={true}
-                    />
-                  </div>
-                ) : project.id === 2 ? (
-                  // HOLMES PLACE - Video Background - 1080P QUALITY
-                  <div className="w-full h-full flex items-center justify-center">
-                    <iframe 
-                      src="https://iframe.mediadelivery.net/embed/518087/089f6cd5-ba00-4b0b-8cd4-c113446061c5?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
-                      loading="lazy" 
-                      className="w-[130%] h-[130%] border-0 scale-110" 
-                      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-                      allowFullScreen={true}
-                    />
-                  </div>
-                ) : project.id === 3 ? (
-                  // AUDI FRANKFURT - Video Background - 1080P QUALITY
-                  <div className="w-full h-full flex items-center justify-center">
-                    <iframe 
-                      src="https://iframe.mediadelivery.net/embed/518087/2a2f0eec-a080-4771-9f31-76a1f7448c1a?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
-                      loading="lazy" 
-                      className="w-[130%] h-[130%] border-0 scale-110" 
-                      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-                      allowFullScreen={true}
-                    />
-                  </div>
-                ) : (
-                  // Other projects - Image
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                )}
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70 group-hover:from-black/60 group-hover:to-black/80 transition-all duration-500" />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 h-full flex flex-col justify-between p-8 lg:p-10">
-                {/* Title */}
-                <h3 className="text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight group-hover:text-blue-400 transition-colors duration-300">
-                  {project.title}
-                </h3>
-
-                {/* Category - Vertical Text */}
-                <div className="self-start">
-                  <p className="text-xs lg:text-sm font-medium text-white/60 tracking-widest uppercase writing-mode-vertical transform rotate-180">
-                    {project.category}
-                  </p>
-                </div>
-              </div>
-
-              {/* Hover Effect - Green Border */}
-              <div className="absolute inset-0 border-4 border-transparent group-hover:border-blue-400/50 rounded-2xl transition-all duration-300 pointer-events-none" />
-            </Link>
+            <VideoCard key={project.id} project={project} />
           ))}
 
           {/* See All Projects Card */}
@@ -165,7 +193,7 @@ export function ProjectsGrid() {
               </div>
             </div>
 
-            {/* Hover Effect - Green Border */}
+            {/* Hover Effect - Blue Border */}
             <div className="absolute inset-0 border-4 border-transparent group-hover:border-blue-400/50 rounded-2xl transition-all duration-300 pointer-events-none" />
           </Link>
         </div>
@@ -173,4 +201,3 @@ export function ProjectsGrid() {
     </section>
   );
 }
-
