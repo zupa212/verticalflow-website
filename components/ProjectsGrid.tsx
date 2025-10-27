@@ -97,6 +97,7 @@ function VideoCard({ project }: { project: Project }) {
                 className="w-[130%] h-[130%] border-0 scale-110" 
                 allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
                 allowFullScreen={true}
+                style={{ pointerEvents: 'auto' }}
               />
             ) : (
               // Placeholder image before video loads
@@ -124,8 +125,10 @@ function VideoCard({ project }: { project: Project }) {
       {(project.id === 1 || project.id === 2 || project.id === 3) && isVisible && (
         <button
           onClick={toggleMute}
-          className="absolute bottom-4 right-4 z-40 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 backdrop-blur-sm border border-white/20"
+          onTouchEnd={toggleMute}
+          className="absolute bottom-4 right-4 z-50 w-10 h-10 bg-black/50 hover:bg-black/70 active:bg-black/80 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 backdrop-blur-sm border border-white/20 touch-manipulation"
           aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+          type="button"
         >
           {isMuted ? (
             // Muted icon - Black
