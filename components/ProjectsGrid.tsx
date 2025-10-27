@@ -39,7 +39,6 @@ function VideoCard({ project }: { project: Project }) {
   const [isMuted, setIsMuted] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLAnchorElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Intersection Observer for lazy loading
   useEffect(() => {
@@ -62,32 +61,21 @@ function VideoCard({ project }: { project: Project }) {
     return () => observer.disconnect();
   }, []);
 
-  // Get video URLs based on project
-  const getVideoData = (projectId: number) => {
-    const videos: { [key: number]: { hls: string; poster: string } } = {
-      1: {
-        hls: "https://vz-01468b22-0f0.b-cdn.net/a432aa81-5f88-4af7-8578-6b012a44e64b/playlist.m3u8",
-        poster: "https://vz-01468b22-0f0.b-cdn.net/a432aa81-5f88-4af7-8578-6b012a44e64b/thumbnail.jpg"
-      }, // CENTRAL VIP
-      2: {
-        hls: "https://vz-01468b22-0f0.b-cdn.net/089f6cd5-ba00-4b0b-8cd4-c113446061c5/playlist.m3u8",
-        poster: "https://vz-01468b22-0f0.b-cdn.net/089f6cd5-ba00-4b0b-8cd4-c113446061c5/thumbnail.jpg"
-      }, // HOLMES PLACE
-      3: {
-        hls: "https://vz-01468b22-0f0.b-cdn.net/2a2f0eec-a080-4771-9f31-76a1f7448c1a/playlist.m3u8",
-        poster: "https://vz-01468b22-0f0.b-cdn.net/2a2f0eec-a080-4771-9f31-76a1f7448c1a/thumbnail.jpg"
-      }, // AUDI FRANKFURT
+  // Get video iframe URL based on project
+  const getVideoUrl = (projectId: number, muted: boolean) => {
+    const baseUrl = "https://iframe.mediadelivery.net/embed/518087/";
+    const videos: { [key: number]: string } = {
+      1: "a432aa81-5f88-4af7-8578-6b012a44e64b", // CENTRAL VIP
+      2: "089f6cd5-ba00-4b0b-8cd4-c113446061c5", // HOLMES PLACE
+      3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
     };
-    return videos[projectId];
+    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=${muted}&preload=true&responsive=true&quality=720p`;
   };
 
   const toggleMute = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(!isMuted);
-    }
+    setIsMuted(!isMuted);
   };
 
   return (
@@ -99,28 +87,21 @@ function VideoCard({ project }: { project: Project }) {
       {/* Background Video/Image */}
       <div className="absolute inset-0">
         {project.id === 1 || project.id === 2 || project.id === 3 ? (
-          // Video Background with Lazy Loading & Native Video
+          // Video Background with Lazy Loading - Iframe
           <div className="w-full h-full flex items-center justify-center">
             {isVisible ? (
-              <video
-                ref={videoRef}
-                src={getVideoData(project.id).hls}
-                poster={getVideoData(project.id).poster}
-                autoPlay
-                loop
-                playsInline
-                preload="metadata"
-                muted={isMuted}
-                className="w-[130%] h-[130%] object-cover scale-110"
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                }}
+              <iframe 
+                key={`${project.id}-${isMuted}`}
+                src={getVideoUrl(project.id, isMuted)} 
+                loading="eager" 
+                className="w-[130%] h-[130%] border-0 scale-110" 
+                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
+                allowFullScreen={true}
               />
             ) : (
               // Placeholder image before video loads
               <img
-                src={getVideoData(project.id).poster}
+                src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -139,23 +120,23 @@ function VideoCard({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70 group-hover:from-black/60 group-hover:to-black/80 transition-all duration-500" />
       </div>
 
-      {/* Sound Toggle Button - Only for video projects when visible */}
+      {/* Sound Toggle Button - Bottom Right - Black SVG */}
       {(project.id === 1 || project.id === 2 || project.id === 3) && isVisible && (
         <button
           onClick={toggleMute}
-          className="absolute top-4 right-4 z-40 w-8 h-8 bg-white/90 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
+          className="absolute bottom-4 right-4 z-40 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 backdrop-blur-sm border border-white/20"
           aria-label={isMuted ? 'Unmute video' : 'Mute video'}
         >
           {isMuted ? (
-            // Muted icon
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            // Muted icon - Black
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
               <line x1="23" y1="9" x2="17" y2="15"></line>
               <line x1="17" y1="9" x2="23" y2="15"></line>
             </svg>
           ) : (
-            // Unmuted icon
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            // Unmuted icon - Black/White
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
               <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
             </svg>
