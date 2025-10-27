@@ -226,3 +226,38 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+/* Video Performance Optimization */
+video {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: contents;
+  pointer-events: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* HLS Video Smooth Playback */
+video[src*=".m3u8"] {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Video Container Optimization */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
