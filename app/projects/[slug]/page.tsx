@@ -86,10 +86,11 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <iframe
-            src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p`}
+            src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p&playsinline=1`}
             className="w-full h-full border-0 object-cover"
             allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
             allowFullScreen={true}
+            playsInline={true}
           />
         </div>
 
