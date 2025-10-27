@@ -21,10 +21,10 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'HOLMES PLACE',
-    category: 'Fitness & Wellness / Personal Brand',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
-    slug: 'holmes-place',
+    title: 'FOTIS TRADER',
+    category: 'Personal Brand',
+    image: 'https://vz-01468b22-0f0.b-cdn.net/e01947d3-7850-426c-a59f-6d93fae33443/preview.webp?v=1761689702',
+    slug: 'fotis-trader',
   },
   {
     id: 3,
@@ -65,7 +65,7 @@ function VideoCard({ project }: { project: Project }) {
     const baseUrl = "https://iframe.mediadelivery.net/embed/518087/";
     const videos: { [key: number]: string } = {
       1: "a432aa81-5f88-4af7-8578-6b012a44e64b", // CENTRAL VIP
-      2: "089f6cd5-ba00-4b0b-8cd4-c113446061c5", // HOLMES PLACE
+      2: "e01947d3-7850-426c-a59f-6d93fae33443", // FOTIS TRADER
       3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
     };
     return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p`;
