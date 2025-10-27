@@ -461,7 +461,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               Your Project?
             </h2>
             <p className="text-xl text-white/70 mb-12">
-              Let's create something amazing together.
+              Let&apos;s create something amazing together.
             </p>
             <Link
               href="#contact"
