@@ -37,6 +37,7 @@ const projects: Project[] = [
 
 function VideoCard({ project }: { project: Project }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     // Hide loader after 2.5 seconds
@@ -47,6 +48,23 @@ function VideoCard({ project }: { project: Project }) {
     return () => clearTimeout(timer);
   }, []);
 
+  // Get video embed URL based on project
+  const getVideoUrl = (projectId: number, muted: boolean) => {
+    const baseUrl = "https://iframe.mediadelivery.net/embed/518087/";
+    const videos = {
+      1: "a432aa81-5f88-4af7-8578-6b012a44e64b", // CENTRAL VIP
+      2: "089f6cd5-ba00-4b0b-8cd4-c113446061c5", // HOLMES PLACE
+      3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
+    };
+    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=${muted}&preload=true&responsive=true&quality=1080p`;
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsMuted(!isMuted);
+  };
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -54,33 +72,12 @@ function VideoCard({ project }: { project: Project }) {
     >
       {/* Background Video/Image */}
       <div className="absolute inset-0">
-        {project.id === 1 ? (
-          // CENTRAL VIP - Video Background - 1080P QUALITY
+        {project.id === 1 || project.id === 2 || project.id === 3 ? (
+          // Video Background - 1080P QUALITY
           <div className="w-full h-full flex items-center justify-center">
             <iframe 
-              src="https://iframe.mediadelivery.net/embed/518087/a432aa81-5f88-4af7-8578-6b012a44e64b?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
-              loading="lazy" 
-              className="w-[130%] h-[130%] border-0 scale-110" 
-              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-              allowFullScreen={true}
-            />
-          </div>
-        ) : project.id === 2 ? (
-          // HOLMES PLACE - Video Background - 1080P QUALITY
-          <div className="w-full h-full flex items-center justify-center">
-            <iframe 
-              src="https://iframe.mediadelivery.net/embed/518087/089f6cd5-ba00-4b0b-8cd4-c113446061c5?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
-              loading="lazy" 
-              className="w-[130%] h-[130%] border-0 scale-110" 
-              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-              allowFullScreen={true}
-            />
-          </div>
-        ) : project.id === 3 ? (
-          // AUDI FRANKFURT - Video Background - 1080P QUALITY
-          <div className="w-full h-full flex items-center justify-center">
-            <iframe 
-              src="https://iframe.mediadelivery.net/embed/518087/2a2f0eec-a080-4771-9f31-76a1f7448c1a?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p" 
+              key={`${project.id}-${isMuted}`}
+              src={getVideoUrl(project.id, isMuted)} 
               loading="lazy" 
               className="w-[130%] h-[130%] border-0 scale-110" 
               allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
@@ -108,6 +105,30 @@ function VideoCard({ project }: { project: Project }) {
             <div className="absolute inset-0 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"></div>
           </div>
         </div>
+      )}
+
+      {/* Sound Toggle Button - Only for video projects */}
+      {(project.id === 1 || project.id === 2 || project.id === 3) && !isLoading && (
+        <button
+          onClick={toggleMute}
+          className="absolute top-4 right-4 z-40 w-8 h-8 bg-white/90 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+        >
+          {isMuted ? (
+            // Muted icon
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          ) : (
+            // Unmuted icon
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          )}
+        </button>
       )}
 
       {/* Content */}
