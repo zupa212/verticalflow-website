@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface Project {
   id: number;
@@ -37,6 +37,29 @@ const projects: Project[] = [
 
 function VideoCard({ project }: { project: Project }) {
   const [isMuted, setIsMuted] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLAnchorElement>(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '200px' } // Start loading 200px before visible
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Get video embed URL based on project
   const getVideoUrl = (projectId: number, muted: boolean) => {
@@ -46,7 +69,7 @@ function VideoCard({ project }: { project: Project }) {
       2: "089f6cd5-ba00-4b0b-8cd4-c113446061c5", // HOLMES PLACE
       3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
     };
-    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=${muted}&preload=true&responsive=true&quality=1080p`;
+    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=${muted}&preload=true&responsive=true&quality=720p`; // 720p for faster loading
   };
 
   const toggleMute = (e: React.MouseEvent) => {
@@ -57,22 +80,33 @@ function VideoCard({ project }: { project: Project }) {
 
   return (
     <Link
+      ref={cardRef}
       href={`/projects/${project.slug}`}
       className="group relative aspect-[4/5] overflow-hidden rounded-2xl"
     >
       {/* Background Video/Image */}
       <div className="absolute inset-0">
         {project.id === 1 || project.id === 2 || project.id === 3 ? (
-          // Video Background - 1080P QUALITY
+          // Video Background with Lazy Loading
           <div className="w-full h-full flex items-center justify-center">
-            <iframe 
-              key={`${project.id}-${isMuted}`}
-              src={getVideoUrl(project.id, isMuted)} 
-              loading="lazy" 
-              className="w-[130%] h-[130%] border-0 scale-110" 
-              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
-              allowFullScreen={true}
-            />
+            {isVisible ? (
+              <iframe 
+                key={`${project.id}-${isMuted}`}
+                src={getVideoUrl(project.id, isMuted)} 
+                loading="eager" 
+                className="w-[130%] h-[130%] border-0 scale-110" 
+                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
+                allowFullScreen={true}
+              />
+            ) : (
+              // Placeholder image before video loads
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            )}
           </div>
         ) : (
           // Other projects - Image
@@ -86,8 +120,8 @@ function VideoCard({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70 group-hover:from-black/60 group-hover:to-black/80 transition-all duration-500" />
       </div>
 
-      {/* Sound Toggle Button - Only for video projects */}
-      {(project.id === 1 || project.id === 2 || project.id === 3) && (
+      {/* Sound Toggle Button - Only for video projects when visible */}
+      {(project.id === 1 || project.id === 2 || project.id === 3) && isVisible && (
         <button
           onClick={toggleMute}
           className="absolute top-4 right-4 z-40 w-8 h-8 bg-white/90 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"

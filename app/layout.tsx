@@ -25,6 +25,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#3b82f6" />
+        {/* Bunny CDN Preconnect for faster video loading */}
+        <link rel="preconnect" href="https://iframe.mediadelivery.net" />
+        <link rel="preconnect" href="https://vz-01468b22-0f0.b-cdn.net" />
+        <link rel="dns-prefetch" href="https://iframe.mediadelivery.net" />
+        <link rel="dns-prefetch" href="https://vz-01468b22-0f0.b-cdn.net" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
