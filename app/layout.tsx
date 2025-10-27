@@ -113,6 +113,29 @@ export default function RootLayout({
               // Global smooth scroll optimization
               document.documentElement.style.scrollBehavior = 'smooth';
               document.body.style.overflowX = 'hidden';
+              
+              // Prevent iPhone Safari power saving mode from stopping videos
+              (function() {
+                // Disable page visibility throttling
+                if ('webkitSetFullscreenEnabled' in document) {
+                  document.webkitSetFullscreenEnabled(true);
+                }
+                
+                // Keep page active to prevent throttling
+                let keepActive = setInterval(function() {
+                  if (document.hidden === false) {
+                    // Ping the page to keep it active
+                    if (navigator.wakeLock) {
+                      navigator.wakeLock.request('screen').catch(() => {});
+                    }
+                  }
+                }, 1000);
+                
+                // Cleanup on unload
+                window.addEventListener('beforeunload', function() {
+                  clearInterval(keepActive);
+                });
+              })();
             `,
           }}
         />

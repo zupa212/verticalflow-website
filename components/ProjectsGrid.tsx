@@ -60,7 +60,7 @@ function VideoCard({ project }: { project: Project }) {
     return () => observer.disconnect();
   }, []);
 
-  // Get video iframe URL based on project (always muted for autoplay, playsinline for iPhone)
+  // Get video iframe URL based on project (optimized for iPhone Safari power saving mode)
   const getVideoUrl = (projectId: number) => {
     const baseUrl = "https://iframe.mediadelivery.net/embed/518087/";
     const videos: { [key: number]: string } = {
@@ -68,7 +68,7 @@ function VideoCard({ project }: { project: Project }) {
       2: "089f6cd5-ba00-4b0b-8cd4-c113446061c5", // HOLMES PLACE
       3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
     };
-    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p&playsinline=1`;
+    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=auto&responsive=true&quality=720p&playsinline=1&bypass=true`;
   };
 
   return (
@@ -90,7 +90,13 @@ function VideoCard({ project }: { project: Project }) {
                 allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" 
                 allowFullScreen={true}
                 playsInline={true}
-                style={{ pointerEvents: 'auto' }}
+                webkit-playsinline="true"
+                preload="auto"
+                style={{ 
+                  pointerEvents: 'auto',
+                  WebkitPowerSavingMode: 'disabled',
+                  willChange: 'contents'
+                }}
               />
             ) : (
               // Placeholder image before video loads

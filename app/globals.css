@@ -261,3 +261,40 @@ video::-webkit-media-controls-play-button {
 video::-webkit-media-controls-start-playback-button {
   display: none !important;
 }
+
+/* iPhone Safari Power Saving Mode Bypass */
+iframe {
+  -webkit-transition: opacity 0.01s;
+  transition: opacity 0.01s;
+}
+
+/* Force hardware acceleration */
+iframe[allow="autoplay"] {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Prevent Safari from throttling videos in power saving mode */
+@media (prefers-reduced-motion: no-preference) {
+  iframe {
+    animation: keep-active 60s infinite linear;
+  }
+}
+
+@keyframes keep-active {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.999; }
+}
+
+/* iOS specific video optimizations */
+@supports (-webkit-touch-callout: none) {
+  iframe {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
