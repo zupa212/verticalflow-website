@@ -61,19 +61,21 @@ const projects = {
   'king-barbershop': {
     id: 4,
     title: 'KING BARBERSHOP',
-    category: 'Reels & Short-form Content',
-    description: 'Social media reels and short-form video content for a premium barbershop brand.',
+    category: 'Web Development & SEO',
+    description: 'Complete website development and SEO optimization for a premium barbershop franchise.',
     year: '2024',
-    services: ['Social Media Reels', 'Video Production', 'Short-form Content', 'Content Strategy'],
+    website: 'https://www.kingsbarbershop.gr/',
+    services: ['Web Development', 'SEO Optimization', 'Brand Identity', 'Responsive Design'],
     videoId: null,
     gallery: [
-      'https://images.unsplash.com/photo-1622296242141-c3c3c6e66bb9?w=1200&q=80',
-      'https://images.unsplash.com/photo-1607252650355-f7fd14a4d6ab?w=1200&q=80',
+      { type: 'image', url: '/8ab1f84b-2d00-49d8-b59d-7340c4b75f78.png' },
+      { type: 'video', videoId: '232f5d5f-a1e5-4c26-a6d3-5b1b49897b38' },
+      { type: 'video', videoId: 'eb7ff409-55ce-4235-8bcb-e682e0b7ac9b' },
     ],
-    challenge: 'Creating authentic, engaging content for a modern barbershop to attract clientele.',
-    solution: 'Developed a series of viral-worthy reels showcasing services, style, and atmosphere.',
-    impact: 'Increased followers and walk-in customers through engaging visual content.',
-    technologies: ['Video Production', 'Motion Graphics', 'Social Media Strategy'],
+    challenge: 'Building a premium, multi-location barbershop website with franchise opportunities.',
+    solution: 'Developed a sleek, responsive website with SEO optimization and integrated booking system.',
+    impact: 'Increased online presence, bookings, and franchise inquiries through optimized web presence.',
+    technologies: ['Next.js', 'SEO', 'Responsive Design', 'Booking Integration'],
   },
   'barbers-of-the-north': {
     id: 5,
@@ -250,11 +252,24 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
             <p className="text-xl lg:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
               {project.description}
             </p>
-            <div className="flex items-center justify-center gap-6 text-sm uppercase tracking-wider text-white/60">
+            <div className="flex items-center justify-center gap-6 text-sm uppercase tracking-wider text-white/60 mb-8">
               <span>{project.category}</span>
               <span>•</span>
               <span>{project.year}</span>
             </div>
+            {project.website && (
+              <motion.a
+                href={project.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-white/90"
+              >
+                Visit Website →
+              </motion.a>
+            )}
           </motion.div>
 
           {/* Back Button */}
@@ -317,23 +332,49 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               Gallery
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.gallery.map((img, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative aspect-square rounded-2xl overflow-hidden group"
-                >
-                  <img
-                    src={img}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
-              ))}
+              {project.gallery.map((item, index) => {
+                const isVideo = typeof item === 'object' && item.type === 'video';
+                const isImageObj = typeof item === 'object' && item.type === 'image';
+                const imageUrl = typeof item === 'string' ? item : (isImageObj ? item.url : null);
+                
+                if (isVideo) {
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="relative aspect-square rounded-2xl overflow-hidden group"
+                    >
+                      <iframe
+                        src={`https://iframe.mediadelivery.net/embed/518087/${item.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p`}
+                        className="w-full h-full border-0"
+                        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                        allowFullScreen={true}
+                      />
+                    </motion.div>
+                  );
+                }
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative aspect-square rounded-2xl overflow-hidden group"
+                  >
+                    <img
+                      src={imageUrl}
+                      alt={`Gallery ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
