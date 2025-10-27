@@ -36,17 +36,7 @@ const projects: Project[] = [
 ];
 
 function VideoCard({ project }: { project: Project }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-
-  useEffect(() => {
-    // Hide loader after 2.5 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Get video embed URL based on project
   const getVideoUrl = (projectId: number, muted: boolean) => {
@@ -96,19 +86,8 @@ function VideoCard({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70 group-hover:from-black/60 group-hover:to-black/80 transition-all duration-500" />
       </div>
 
-      {/* Loading Animation Overlay - 2.5 seconds */}
-      {isLoading && (
-        <div className="absolute inset-0 z-50 bg-black/90 flex items-center justify-center transition-opacity duration-1000">
-          <div className="relative w-16 h-16">
-            {/* Animated spinner */}
-            <div className="absolute inset-0 border-4 border-blue-400/20 rounded-full"></div>
-            <div className="absolute inset-0 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"></div>
-          </div>
-        </div>
-      )}
-
       {/* Sound Toggle Button - Only for video projects */}
-      {(project.id === 1 || project.id === 2 || project.id === 3) && !isLoading && (
+      {(project.id === 1 || project.id === 2 || project.id === 3) && (
         <button
           onClick={toggleMute}
           className="absolute top-4 right-4 z-40 w-8 h-8 bg-white/90 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
