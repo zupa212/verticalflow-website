@@ -1,8 +1,6 @@
 'use client';
 
-import { use } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
@@ -62,9 +60,8 @@ const projects = {
   },
 };
 
-export default function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  const project = projects[slug as keyof typeof projects];
+export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+  const project = projects[params.slug as keyof typeof projects];
 
   if (!project) {
     return (
