@@ -201,6 +201,14 @@ const projects = {
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const project = projects[params.slug as keyof typeof projects];
 
+  // Helper function to get image URL from gallery item
+  const getGalleryImageUrl = (item: string | { type: string; url?: string; videoId?: string }) => {
+    if (typeof item === 'string') return item;
+    if (item.type === 'image' && item.url) return item.url;
+    if (item.type === 'video' && item.videoId) return `https://vz-01468b22-0f0.b-cdn.net/${item.videoId}/thumbnail.jpg`;
+    return '';
+  };
+
   if (!project) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -229,7 +237,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
             />
           ) : (
             <img
-              src={project.gallery[0]}
+              src={getGalleryImageUrl(project.gallery[0])}
               alt={project.title}
               className="w-full h-full object-cover"
             />
@@ -335,7 +343,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               {project.gallery.map((item, index) => {
                 const isVideo = typeof item === 'object' && item.type === 'video';
                 const isImageObj = typeof item === 'object' && item.type === 'image';
-                const imageUrl = typeof item === 'string' ? item : (isImageObj ? item.url : null);
+                const imageUrl = getGalleryImageUrl(item);
                 
                 if (isVideo) {
                   return (
