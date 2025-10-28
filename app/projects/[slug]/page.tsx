@@ -4,8 +4,26 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
+// Project type definition
+type GalleryItem = string | { type: 'image' | 'video'; url?: string; videoId?: string };
+type Project = {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  year: string;
+  services: string[];
+  videoId: string | null;
+  gallery: GalleryItem[];
+  challenge: string;
+  solution: string;
+  impact: string;
+  technologies: string[];
+  website?: string;
+};
+
 // Project database
-const projects = {
+const projects: Record<string, Project> = {
   'central-vip': {
     id: 1,
     title: 'CENTRAL VIP',
