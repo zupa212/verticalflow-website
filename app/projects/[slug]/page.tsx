@@ -34,9 +34,7 @@ const projects: Record<string, Project> = {
     videoId: 'a432aa81-5f88-4af7-8578-6b012a44e64b',
     gallery: [
       { type: 'image', url: '/images (1).jpg' },
-      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
-      'https://images.unsplash.com/photo-1492144534655-ae79c7c9eb30?w=1200&q=80',
-      'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&q=80',
+      { type: 'video', videoId: 'a432aa81-5f88-4af7-8578-6b012a44e64b' },
     ],
     challenge: 'Creating engaging content for luxury car rentals that showcases exclusivity and appeal.',
     solution: 'Produced high-quality video reels and digital advertisements that highlight the premium nature of the fleet.',
@@ -266,6 +264,22 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
 
+        {/* Back Button - Fixed position top-left */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="fixed top-6 left-6 lg:top-8 lg:left-12 z-50"
+        >
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 hover:bg-white/90 shadow-lg"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Projects
+          </Link>
+        </motion.div>
+
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <motion.div
@@ -297,22 +311,6 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                 Visit Website →
               </motion.a>
             )}
-          </motion.div>
-
-          {/* Back Button */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="absolute top-8 left-6 lg:left-12"
-          >
-            <Link
-              href="/projects"
-              className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 hover:bg-white/90"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Projects
-            </Link>
           </motion.div>
         </div>
       </section>
