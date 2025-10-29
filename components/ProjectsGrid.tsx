@@ -87,7 +87,7 @@ function VideoCard({ project }: { project: Project }) {
                     <iframe
                       src={getVideoUrl(project.id)}
                       loading="lazy"
-                      className="w-[130%] h-[130%] border-0 scale-110"
+                      className="w-full h-full border-0 object-cover"
                       allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
                       allowFullScreen={true}
                     />
