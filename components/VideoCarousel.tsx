@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { ChevronUp, ChevronDown, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
 interface Reel {
@@ -212,10 +213,11 @@ export function VideoCarousel() {
             {/* Background Image/Video */}
             {reel.posterUrl && (
               <div className="absolute inset-0 w-full h-full overflow-hidden">
-                <img
+                <Image
                   src={reel.posterUrl}
                   alt={reel.title}
-                  className="w-full h-full object-cover opacity-70 lg:opacity-60"
+                  fill
+                  className="object-cover opacity-70 lg:opacity-60"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70" />
               </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export function BlogParallax() {
@@ -34,9 +35,11 @@ export function BlogParallax() {
           transition: 'transform 0.1s ease-out',
         }}
       >
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?w=1920&q=80"
           alt="Blog background"
+          width={1920}
+          height={1080}
           className="w-full h-[120%] object-cover"
         />
         {/* Dark Overlay */}

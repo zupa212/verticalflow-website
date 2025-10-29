@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Volume2, VolumeX } from 'lucide-react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { BlogParallax } from '@/components/BlogParallax';
@@ -215,7 +216,12 @@ export default function HomePage() {
             className="min-h-screen bg-gradient-to-br from-purple-900/90 to-purple-700/90 rounded-3xl overflow-hidden relative"
           >
             <div className="absolute inset-0">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" alt="Brand Strategy" className="w-full h-full object-cover" />
+              <Image 
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" 
+                alt="Brand Strategy" 
+                fill
+                className="object-cover" 
+              />
               <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 to-purple-700/90" />
             </div>
             <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
@@ -236,7 +242,12 @@ export default function HomePage() {
             className="min-h-screen bg-gradient-to-br from-blue-900/90 to-blue-700/90 rounded-3xl overflow-hidden relative"
           >
             <div className="absolute inset-0">
-              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80" alt="Visual Identity" className="w-full h-full object-cover" />
+              <Image 
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80" 
+                alt="Visual Identity" 
+                fill
+                className="object-cover" 
+              />
               <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-700/90" />
             </div>
             <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
@@ -257,7 +268,12 @@ export default function HomePage() {
             className="min-h-screen bg-gradient-to-br from-emerald-900/90 to-emerald-700/90 rounded-3xl overflow-hidden relative"
           >
             <div className="absolute inset-0">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Digital Presence" className="w-full h-full object-cover" />
+              <Image 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" 
+                alt="Digital Presence" 
+                fill
+                className="object-cover" 
+              />
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 to-emerald-700/90" />
             </div>
             <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">
@@ -278,7 +294,12 @@ export default function HomePage() {
             className="min-h-screen bg-gradient-to-br from-orange-900/90 to-orange-700/90 rounded-3xl overflow-hidden relative"
           >
             <div className="absolute inset-0">
-              <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80" alt="Content Creation" className="w-full h-full object-cover" />
+              <Image 
+                src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80" 
+                alt="Content Creation" 
+                fill
+                className="object-cover" 
+              />
               <div className="absolute inset-0 bg-gradient-to-br from-orange-900/90 to-orange-700/90" />
             </div>
             <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-16 max-w-4xl">

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 
 interface Project {
@@ -92,20 +93,22 @@ function VideoCard({ project }: { project: Project }) {
                     />
                   ) : (
               // Placeholder image before video loads
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 loading="lazy"
               />
             )}
           </div>
         ) : (
           // Other projects - Image
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
         )}
         {/* Dark Overlay */}
@@ -152,10 +155,11 @@ export function ProjectsGrid() {
           >
             {/* Background Image */}
             <div className="absolute inset-0">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
                 alt="See all projects"
-                className="w-full h-full object-cover opacity-40 transition-all duration-700 group-hover:opacity-60 group-hover:scale-110"
+                fill
+                className="object-cover opacity-40 transition-all duration-700 group-hover:opacity-60 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
             </div>

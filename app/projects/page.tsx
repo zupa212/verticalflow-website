@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -186,9 +187,11 @@ export default function ProjectsPage() {
               >
                 {/* Project Image */}
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={800}
+                    height={600}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
