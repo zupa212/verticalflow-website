@@ -39,12 +39,12 @@ const projects: Project[] = [
   {
     id: 3,
     title: 'BARBERS OF THE NORTH',
-    category: 'Website & Reels',
-    description: 'Complete booking management system with engaging Reels content and advanced SEO optimization for barbershop business.',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80',
+    category: 'Website & Booking System',
+    description: 'Premium barbershop website with modern industrial design, integrated booking system, and SEO optimization for sophisticated grooming services.',
+    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=80',
     slug: 'barbers-of-the-north',
     year: '2024',
-    services: ['Website Development', 'Booking System', 'Reels Content', 'SEO Optimization']
+    services: ['Website Design', 'Booking System', 'SEO Setup', 'Brand Identity', 'Responsive Design']
   },
   {
     id: 4,
