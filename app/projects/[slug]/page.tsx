@@ -33,6 +33,7 @@ const projects: Record<string, Project> = {
     services: ['Video Production', 'Social Media Reels', 'Digital Ads', 'Brand Content'],
     videoId: 'a432aa81-5f88-4af7-8578-6b012a44e64b',
     gallery: [
+      { type: 'image', url: '/images (1).jpg' },
       'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
       'https://images.unsplash.com/photo-1492144534655-ae79c7c9eb30?w=1200&q=80',
       'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&q=80',
