@@ -251,7 +251,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
         <div className="absolute inset-0 z-0">
           {project.videoId ? (
             <iframe
-              src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p`}
+              src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p&bypass=true`}
               className="w-full h-full border-0 object-cover"
               allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
               allowFullScreen={true}
@@ -378,7 +378,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                       className="relative aspect-[9/16] rounded-2xl overflow-hidden group"
                     >
                       <iframe
-                        src={`https://iframe.mediadelivery.net/embed/518087/${item.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p`}
+                        src={`https://iframe.mediadelivery.net/embed/518087/${item.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p&bypass=true`}
                         className="w-full h-full border-0"
                         allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
                         allowFullScreen={true}

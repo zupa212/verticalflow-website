@@ -69,7 +69,7 @@ function VideoCard({ project }: { project: Project }) {
       2: "e01947d3-7850-426c-a59f-6d93fae33443", // FOTIS TRADER
       3: "2a2f0eec-a080-4771-9f31-76a1f7448c1a", // AUDI FRANKFURT
     };
-    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p`;
+    return `${baseUrl}${videos[projectId]}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p&bypass=true`;
   };
 
   return (
