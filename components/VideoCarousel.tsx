@@ -224,7 +224,9 @@ export function VideoCarousel() {
             {/* Video Element (if video URL provided) */}
             {reel.videoUrl && (
               <video
-                ref={(el) => (videoRefs.current[index] = el)}
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
                 src={reel.videoUrl}
                 poster={reel.posterUrl}
                 className="absolute inset-0 w-full h-full object-cover"
