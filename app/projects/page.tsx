@@ -41,7 +41,7 @@ const projects: Project[] = [
     title: 'BARBERS OF THE NORTH',
     category: 'Website & Booking System',
     description: 'Premium barbershop website with modern industrial design, integrated booking system, and SEO optimization for sophisticated grooming services.',
-    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=80',
+    image: '/f8d56692-5846-4651-83a2-566f6648502f.png',
     slug: 'barbers-of-the-north',
     year: '2024',
     services: ['Website Design', 'Booking System', 'SEO Setup', 'Brand Identity', 'Responsive Design']

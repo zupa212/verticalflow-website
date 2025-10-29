@@ -104,9 +104,10 @@ const projects: Record<string, Project> = {
     services: ['Website Design', 'Booking System', 'SEO Setup', 'Brand Identity', 'Responsive Design'],
     videoId: null,
     gallery: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=80' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1607252650355-f7fd14a4d6ab?w=1200&q=80' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80' },
+      { type: 'image', url: '/f8d56692-5846-4651-83a2-566f6648502f.png' },
+      { type: 'image', url: '/64406659-411c-4673-9901-7d99103c4796.png' },
+      { type: 'image', url: '/706823f4-f5f9-46db-b7bc-c795bc37666d.png' },
+      { type: 'image', url: '/8d854dcd-a1e8-4127-a9f4-739f49915caf.png' },
     ],
     challenge: 'Creating a premium digital presence that reflects the sophisticated barbershop experience with classic barber chairs, modern lighting, and professional grooming services.',
     solution: 'Developed a sleek website featuring the barbershop&apos;s modern industrial aesthetic with integrated booking system and SEO optimization.',
