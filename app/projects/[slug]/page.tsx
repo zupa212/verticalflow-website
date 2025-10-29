@@ -370,7 +370,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="relative aspect-square rounded-2xl overflow-hidden group"
+                      className="relative aspect-[9/16] rounded-2xl overflow-hidden group"
                     >
                       <iframe
                         src={`https://iframe.mediadelivery.net/embed/518087/${item.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p`}
