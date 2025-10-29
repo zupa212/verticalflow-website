@@ -21,7 +21,7 @@ const projects: Project[] = [
     title: 'CENTRAL VIP',
     category: 'Reels & Ads',
     description: 'Luxury car rentals - Complete video production with engaging Reels and targeted ads for high-end automotive rental services.',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
+    image: '/images (1).jpg',
     slug: 'central-vip',
     year: '2024',
     services: ['Video Production', 'Social Media Reels', 'Digital Ads', 'Brand Content']
@@ -31,7 +31,7 @@ const projects: Project[] = [
     title: 'KING BARBERSHOP',
     category: 'Social Media Reels',
     description: 'Barbershop social media strategy with viral Reels, short-form content, and professional webpage development.',
-    image: 'https://images.unsplash.com/photo-1529369656566-c3d66ab9866b?w=1200&q=80',
+    image: '/8ab1f84b-2d00-49d8-b59d-7340c4b75f78.png',
     slug: 'king-barbershop',
     year: '2024',
     services: ['Social Media Reels', 'Short-form Content', 'Web Development', 'SEO Setup']
