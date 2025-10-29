@@ -100,7 +100,7 @@ export default function HomePage() {
               {/* Mute/Unmute Button */}
               <button
                 onClick={toggleMute}
-                className="absolute bottom-8 right-12 lg:bottom-8 lg:right-12 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/70 transition-all duration-300 group"
+                className="absolute bottom-8 right-32 lg:bottom-8 lg:right-32 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/70 transition-all duration-300 group"
               >
                 {isMuted ? (
                   <VolumeX className="w-5 h-5 text-white/80 group-hover:text-white" />
