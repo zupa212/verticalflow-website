@@ -210,6 +210,147 @@ export default function HomePage() {
       {/* Projects Grid Section */}
       <ProjectsGrid />
 
+      {/* Development Section */}
+      <section id="development" className="relative py-24 lg:py-32 bg-gradient-to-b from-black to-[#0a0a0a] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
+              development
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">.</span>
+            </h2>
+            <p className="text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+              From concept to code, we build modern digital experiences with cutting-edge technology and meticulous attention to detail.
+            </p>
+          </motion.div>
+
+          {/* Technology Stack Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+          >
+            {[
+              { name: 'Next.js', icon: '⚡', desc: 'React Framework', color: 'from-blue-500 to-blue-600' },
+              { name: 'TypeScript', icon: '🔷', desc: 'Type Safety', color: 'from-blue-600 to-indigo-600' },
+              { name: 'Tailwind', icon: '💨', desc: 'Styling', color: 'from-cyan-400 to-blue-500' },
+              { name: 'GSAP', icon: '🎬', desc: 'Animations', color: 'from-green-400 to-emerald-500' },
+              { name: 'Node.js', icon: '🟢', desc: 'Backend', color: 'from-green-500 to-green-600' },
+              { name: 'React', icon: '⚛️', desc: 'UI Library', color: 'from-blue-400 to-cyan-400' },
+              { name: 'Vercel', icon: '▲', desc: 'Deployment', color: 'from-white to-gray-300' },
+              { name: 'Git', icon: '📦', desc: 'Version Control', color: 'from-orange-500 to-red-500' },
+            ].map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="p-8 bg-white/5 border border-white/10 rounded-2xl hover:border-blue-400/50 transition-all duration-300 group cursor-pointer backdrop-blur-sm"
+              >
+                <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  {tech.icon}
+                </div>
+                <h3 className="text-2xl font-black text-white mb-2 group-hover:text-blue-400 transition-colors">
+                  {tech.name}
+                </h3>
+                <p className="text-white/60 text-sm font-medium">{tech.desc}</p>
+                <div className={`mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r ${tech.color} transition-all duration-500 rounded-full`} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Development Process Steps */}
+          <div className="space-y-8">
+            {[
+              { 
+                step: '01', 
+                title: 'Strategy & Planning', 
+                desc: 'We analyze your needs, define objectives, and create a comprehensive development roadmap that aligns with your business goals.',
+                gradient: 'from-purple-500/20 to-blue-500/20',
+                borderGradient: 'from-purple-400/50 to-blue-400/50'
+              },
+              { 
+                step: '02', 
+                title: 'Design & Prototyping', 
+                desc: 'Beautiful UI/UX designs that align with your brand identity. We create interactive prototypes to visualize the final product before development.',
+                gradient: 'from-blue-500/20 to-cyan-500/20',
+                borderGradient: 'from-blue-400/50 to-cyan-400/50'
+              },
+              { 
+                step: '03', 
+                title: 'Development & Testing', 
+                desc: 'Clean, maintainable code using modern frameworks. Rigorous testing ensures your application is robust, secure, and performs flawlessly.',
+                gradient: 'from-cyan-500/20 to-emerald-500/20',
+                borderGradient: 'from-cyan-400/50 to-emerald-400/50'
+              },
+              { 
+                step: '04', 
+                title: 'Launch & Optimization', 
+                desc: 'Smooth deployment with performance optimization, SEO implementation, and ongoing support to keep your digital presence at peak performance.',
+                gradient: 'from-emerald-500/20 to-teal-500/20',
+                borderGradient: 'from-emerald-400/50 to-teal-400/50'
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
+                whileHover={{ scale: 1.02, x: index % 2 === 0 ? -10 : 10 }}
+                className={`relative p-8 lg:p-12 bg-gradient-to-r ${item.gradient} rounded-3xl border border-white/10 hover:border-blue-400/30 transition-all duration-500 group overflow-hidden`}
+              >
+                {/* Animated Border Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${item.borderGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-xl`} />
+                
+                <div className="relative z-10 flex flex-col lg:flex-row gap-8 items-center">
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="flex-shrink-0 w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.3)] group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] transition-shadow duration-300"
+                  >
+                    <span className="text-2xl lg:text-3xl font-black text-black">{item.step}</span>
+                  </motion.div>
+                  <div className="flex-1 text-center lg:text-left">
+                    <h3 className="text-3xl lg:text-5xl font-black text-white mb-4 group-hover:text-blue-400 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-lg lg:text-xl text-white/70 leading-relaxed max-w-3xl">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-center mt-20"
+          >
+            <Link href="/projects">
+              <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 rounded-full px-10 py-6 text-lg font-bold tracking-wide transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_50px_rgba(59,130,246,0.5)]">
+                View Development Projects →
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Process Steps Section */}
       <section className="relative py-24 lg:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-24">
