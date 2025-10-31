@@ -23,6 +23,17 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/logo.png', sizes: '192x192', type: 'image/png' },
+      { url: '/logo.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -32,10 +43,10 @@ export const metadata: Metadata = {
     description: 'VerticalFlow creative portfolio showcasing video production, social media content, web design, and digital marketing services. Based in Greece.',
     images: [
       {
-        url: '/og-default.jpg',
+        url: '/logo.png',
         width: 1200,
-        height: 630,
-        alt: 'VerticalFlow Portfolio',
+        height: 1200,
+        alt: 'VerticalFlow Logo',
       },
     ],
   },
@@ -43,7 +54,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'VerticalFlow — Creative Portfolio & Video Production',
     description: 'VerticalFlow creative portfolio showcasing video production, social media content, web design, and digital marketing services.',
-    images: ['/og-default.jpg'],
+    images: ['/logo.png'],
     creator: '@verticalflow',
   },
   robots: {
@@ -76,9 +87,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
+        <link rel="shortcut icon" href="/icon.png" />
         <meta name="theme-color" content="#3b82f6" />
+        <meta name="msapplication-TileImage" content="/logo.png" />
+        <meta name="msapplication-TileColor" content="#3b82f6" />
         {/* Bunny CDN Preconnect for faster video loading */}
         <link rel="preconnect" href="https://iframe.mediadelivery.net" />
         <link rel="preconnect" href="https://vz-01468b22-0f0.b-cdn.net" />

@@ -32,7 +32,7 @@ export default function HomePage() {
     <div className="bg-black text-white min-h-screen">
       {/* Modern Pill Navigation */}
       <PillNav
-        logo="/logo.svg"
+        logo="/logo.png"
         logoAlt="VerticalFlow Logo"
         items={[
           { label: 'Home', href: '/' },
