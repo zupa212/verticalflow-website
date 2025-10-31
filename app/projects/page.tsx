@@ -294,7 +294,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       </footer>
-      </div>
-    </>
+    </div>
   );
 }
