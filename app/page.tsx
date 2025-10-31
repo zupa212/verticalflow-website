@@ -32,6 +32,8 @@ export default function HomePage() {
     <div className="bg-black text-white min-h-screen">
       {/* Modern Pill Navigation */}
       <PillNav
+        logo="/logo.svg"
+        logoAlt="VerticalFlow Logo"
         items={[
           { label: 'Home', href: '/' },
           { label: 'About', href: '#about' },
@@ -39,10 +41,12 @@ export default function HomePage() {
           { label: 'Contact', href: '#contact' }
         ]}
         activeHref="/"
+        className="custom-nav"
+        ease="power2.easeOut"
         baseColor="#ffffff"
         pillColor="#ffffff"
-        pillTextColor="#000000"
         hoveredPillTextColor="#ffffff"
+        pillTextColor="#000000"
       />
 
       {/* Hero Section */}
