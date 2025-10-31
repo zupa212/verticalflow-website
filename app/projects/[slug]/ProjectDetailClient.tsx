@@ -1,0 +1,290 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
+import type { Project, GalleryItem } from '@/lib/projects';
+
+interface ProjectDetailClientProps {
+  project: Project;
+}
+
+export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
+  // Helper function to get image URL from gallery item
+  const getGalleryImageUrl = (item: GalleryItem) => {
+    if (typeof item === 'string') return item;
+    if (typeof item === 'object' && item.type === 'image' && item.url) {
+      return item.url;
+    }
+    if (typeof item === 'object' && item.type === 'video' && item.videoId) {
+      return `https://vz-01468b22-0f0.b-cdn.net/${item.videoId}/thumbnail.jpg`;
+    }
+    return '';
+  };
+
+  return (
+    <div className="bg-black text-white min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Video/Image Background */}
+        <div className="absolute inset-0 z-0">
+          {project.videoId ? (
+            <iframe
+              src={`https://iframe.mediadelivery.net/embed/518087/${project.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=1080p&bypass=true`}
+              className="w-full h-full border-0 object-cover"
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+              allowFullScreen={true}
+            />
+          ) : (
+            <Image
+              src={getGalleryImageUrl(project.gallery[0])}
+              alt={project.title}
+              fill
+              className="object-cover"
+            />
+          )}
+        </div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
+
+        {/* Back Button - Fixed position top-left */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="fixed top-6 left-6 lg:top-8 lg:left-12 z-50"
+        >
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 hover:bg-white/90 shadow-lg"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Projects
+          </Link>
+        </motion.div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-7xl lg:text-9xl font-black mb-6 tracking-tight">
+              {project.title}
+            </h1>
+            <p className="text-xl lg:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+              {project.description}
+            </p>
+            <div className="flex items-center justify-center gap-6 text-sm uppercase tracking-wider text-white/60 mb-8">
+              <span>{project.category}</span>
+              <span>•</span>
+              <span>{project.year}</span>
+            </div>
+            {project.website && (
+              <motion.a
+                href={project.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-white/90"
+              >
+                Visit Website →
+              </motion.a>
+            )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-5xl lg:text-7xl font-black mb-12">Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {project.services.map((service, index) => (
+                <motion.div
+                  key={service}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="p-8 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:border-white/30"
+                >
+                  <h3 className="text-xl font-bold mb-2">{service}</h3>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      {project.gallery.length > 0 && (
+        <section className="py-24 lg:py-32">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl lg:text-7xl font-black mb-12"
+            >
+              Gallery
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.gallery.map((item, index) => {
+                const isVideo = typeof item === 'object' && item.type === 'video';
+                const isImageObj = typeof item === 'object' && item.type === 'image';
+                const imageUrl = getGalleryImageUrl(item);
+                
+                if (isVideo) {
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="relative aspect-[9/16] rounded-2xl overflow-hidden group"
+                    >
+                      <iframe
+                        src={`https://iframe.mediadelivery.net/embed/518087/${item.videoId}?autoplay=true&loop=true&muted=true&preload=true&responsive=true&quality=720p&bypass=true`}
+                        className="w-full h-full border-0"
+                        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                        allowFullScreen={true}
+                      />
+                    </motion.div>
+                  );
+                }
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative aspect-square rounded-2xl overflow-hidden group"
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={`Gallery ${index + 1}`}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Challenge & Solution Section */}
+      <section className="py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 text-blue-400">Challenge</h3>
+              <p className="text-lg text-white/70 leading-relaxed">{project.challenge}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 text-cyan-400">Solution</h3>
+              <p className="text-lg text-white/70 leading-relaxed">{project.solution}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 text-purple-400">Impact</h3>
+              <p className="text-lg text-white/70 leading-relaxed">{project.impact}</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-24 lg:py-32 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl lg:text-7xl font-black mb-12"
+          >
+            Technologies
+          </motion.h2>
+          <div className="flex flex-wrap gap-4">
+            {project.technologies.map((tech, index) => (
+              <motion.span
+                key={tech}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="px-6 py-3 bg-white text-black rounded-full font-bold text-sm"
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 lg:py-48">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-5xl lg:text-7xl font-black mb-8">
+              Ready to Start
+              <br />
+              Your Project?
+            </h2>
+            <p className="text-xl text-white/70 mb-12">
+              Let&apos;s create something amazing together.
+            </p>
+            <Link
+              href="#contact"
+              className="inline-flex items-center px-8 py-4 bg-white text-black rounded-full font-black text-lg transition-all duration-300 hover:scale-105 hover:bg-white/90"
+            >
+              Get In Touch
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
+

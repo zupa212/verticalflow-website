@@ -1,14 +1,71 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Space_Grotesk } from 'next/font/google';
-import { PasswordProtection } from '@/components/PasswordProtection';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://verticalflow.gr';
+const siteName = 'VerticalFlow';
+
 export const metadata: Metadata = {
-  title: 'VerticalFlow',
-  description: 'VerticalFlow creative portfolio',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://verticalflow.gr'),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'VerticalFlow — Creative Portfolio & Video Production',
+    template: '%s | VerticalFlow',
+  },
+  description: 'VerticalFlow creative portfolio showcasing video production, social media content, web design, and digital marketing services. Based in Greece.',
+  keywords: ['video production', 'social media content', 'web design', 'digital marketing', 'creative portfolio', 'Greece', 'video editing', 'brand identity'],
+  authors: [{ name: 'VerticalFlow Team' }],
+  creator: 'VerticalFlow',
+  publisher: 'VerticalFlow',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName,
+    title: 'VerticalFlow — Creative Portfolio & Video Production',
+    description: 'VerticalFlow creative portfolio showcasing video production, social media content, web design, and digital marketing services. Based in Greece.',
+    images: [
+      {
+        url: '/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'VerticalFlow Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VerticalFlow — Creative Portfolio & Video Production',
+    description: 'VerticalFlow creative portfolio showcasing video production, social media content, web design, and digital marketing services.',
+    images: ['/og-default.jpg'],
+    creator: '@verticalflow',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Add your verification codes here
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
 export default function RootLayout({
@@ -19,9 +76,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://verticalflow.gr" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#3b82f6" />
@@ -36,6 +90,29 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         {/* iPhone Safari video playback optimization */}
         <meta name="x-ua-compatible" content="IE=edge" />
+        {/* Organization JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'VerticalFlow',
+              url: siteUrl,
+              logo: `${siteUrl}/logo.png`,
+              description: 'Creative portfolio specializing in video production, social media content, web design, and digital marketing services.',
+              address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'GR',
+              },
+              sameAs: [
+                // Add your social media profiles here
+                // 'https://instagram.com/verticalflow',
+                // 'https://facebook.com/verticalflow',
+              ],
+            }),
+          }}
+        />
         <style dangerouslySetInnerHTML={{
           __html: `
             /* 120fps iPhone Optimization */
@@ -101,9 +178,7 @@ export default function RootLayout({
         }} />
       </head>
       <body className={spaceGrotesk.className}>
-        <PasswordProtection>
-          {children}
-        </PasswordProtection>
+        {children}
         <script
           dangerouslySetInnerHTML={{
             __html: `

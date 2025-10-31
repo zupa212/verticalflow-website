@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { getAllPosts, getAllTags } from '@/lib/blog';
 import { BlogPost } from '@/types/blog';
 import Link from 'next/link';
@@ -6,9 +7,37 @@ import { Calendar, Clock, Tag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-export const metadata = {
-  title: 'Blog | Vertical Flow',
-  description: 'Insights, tips, and stories from the design partner for top-tier companies.',
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://verticalflow.gr';
+
+export const metadata: Metadata = {
+  title: 'Blog | VerticalFlow',
+  description: 'Insights, tips, and stories from the design partner for top-tier companies. Learn about video production, web design, and digital marketing.',
+  keywords: ['blog', 'design tips', 'video production', 'web design', 'digital marketing', 'insights'],
+  openGraph: {
+    title: 'Blog | VerticalFlow',
+    description: 'Insights, tips, and stories from the design partner for top-tier companies.',
+    url: `${siteUrl}/blog`,
+    siteName: 'VerticalFlow',
+    images: [
+      {
+        url: '/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'VerticalFlow Blog',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | VerticalFlow',
+    description: 'Insights, tips, and stories from the design partner for top-tier companies.',
+    images: ['/og-default.jpg'],
+  },
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
 };
 
 export default function BlogPage() {

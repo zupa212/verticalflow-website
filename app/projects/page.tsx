@@ -111,12 +111,7 @@ const projects: Project[] = [
 
 export default function ProjectsPage() {
   return (
-    <>
-      <head>
-        <link rel="canonical" href="https://verticalflow.gr/projects" />
-        <meta name="robots" content="index, follow" />
-      </head>
-      <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
