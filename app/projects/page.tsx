@@ -62,7 +62,7 @@ const projects: Project[] = [
     title: 'GOJACK',
     category: 'Reels & Content',
     description: 'Company formation services abroad - Professional Reels and content creation for international business setup services.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80',
+    image: '/logo-gojack.png',
     slug: 'gojack',
     year: '2024',
     services: ['Reels Content', 'Content Strategy', 'Brand Development', 'Digital Presence']
