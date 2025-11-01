@@ -101,12 +101,12 @@ const projects: Project[] = [
   {
     id: 9,
     title: 'TSIOUPLIS RENTALS',
-    category: 'Car Rental Website',
-    description: 'Car rental platform - Complete booking system with Stripe integration and comprehensive car rental management.',
-    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&q=80',
+    category: 'Website Creation & SMM',
+    description: 'Complete website creation and social media marketing for car sales and rentals.',
+    image: '/tsiouplis-screenshot.png',
     slug: 'tsiouplis-rentals',
     year: '2024',
-    services: ['Website Development', 'Booking System', 'Stripe Integration', 'SEO Setup']
+    services: ['Webpage Creation', 'SMM']
   },
   {
     id: 10,
