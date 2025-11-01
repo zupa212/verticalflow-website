@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import Waves from './Waves';
 
@@ -40,8 +41,14 @@ export function Footer() {
             {/* Logo */}
             <Link href="/" className="inline-block group">
               <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                  <span className="text-black font-black text-sm tracking-wider" style={{writingMode: 'vertical-rl', textOrientation: 'mixed'}}>VERTICAL</span>
+                <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center transition-transform duration-300 group-hover:scale-110 overflow-hidden">
+                  <Image 
+                    src="/logo.png" 
+                    alt="VerticalFlow Logo" 
+                    width={56} 
+                    height={56}
+                    className="object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-black text-white leading-none">VerticalFlow</h3>
