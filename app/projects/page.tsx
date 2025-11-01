@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Footer } from '@/components/Footer';
+import PillNav from '@/components/PillNav';
+import '@/components/PillNav.css';
 
 interface Project {
   id: number;
@@ -123,37 +125,24 @@ const projects: Project[] = [
 export default function ProjectsPage() {
   return (
     <div className="bg-black text-white min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-              <span className="text-black font-black text-xs tracking-wider" style={{writingMode: 'vertical-rl', textOrientation: 'mixed'}}>VERTICAL</span>
-            </div>
-          </Link>
-
-          {/* Navigation Links */}
-          <div className="hidden lg:flex items-center gap-8">
-            <Link href="/projects" className="text-blue-400 font-medium text-sm">
-              Projects
-            </Link>
-            <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm font-medium">
-              Blog
-            </Link>
-            <Link href="/contact" className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 rounded-full px-6 py-2 text-sm font-bold tracking-wide transition-all duration-300 hover:scale-105">
-              GET IN TOUCH
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden text-white p-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </nav>
+      {/* Modern Pill Navigation */}
+      <PillNav
+        logo="/logo.png"
+        logoAlt="VerticalFlow Logo"
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'About', href: '#about' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'Contact', href: '#contact' }
+        ]}
+        activeHref="/projects"
+        className="custom-nav"
+        ease="power2.easeOut"
+        baseColor="#ffffff"
+        pillColor="#ffffff"
+        hoveredPillTextColor="#ffffff"
+        pillTextColor="#000000"
+      />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-b from-black to-[#0a0a0a]">
