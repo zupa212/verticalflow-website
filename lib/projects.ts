@@ -151,9 +151,9 @@ export const projects: Record<string, Project> = {
     services: ['Personal Branding', 'Reels Content', 'Video Production', 'Social Media Strategy'],
     videoId: 'e01947d3-7850-426c-a59f-6d93fae33443',
     gallery: [
+      { type: 'image', url: '/logo.png' },
       { type: 'image', url: '/fotis-gallery-1.png' },
       { type: 'video', videoId: 'e01947d3-7850-426c-a59f-6d93fae33443' },
-      'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&q=80',
     ],
     challenge: 'Establishing authority and credibility in the finance education space.',
     solution: 'Developed engaging educational reels that simplify complex financial concepts.',
