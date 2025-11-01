@@ -107,6 +107,16 @@ const projects: Project[] = [
     slug: 'tsiouplis-rentals',
     year: '2024',
     services: ['Website Development', 'Booking System', 'Stripe Integration', 'SEO Setup']
+  },
+  {
+    id: 10,
+    title: 'Το Ελληνικόν - Green Family',
+    category: 'Short Form Content & Google Ads',
+    description: 'Short form content and Google Ads campaigns for brand awareness and engagement.',
+    image: '/logo-green-family.jpg',
+    slug: 'green-family',
+    year: '2024',
+    services: ['Short Form Content', 'Google Ads', 'Brand Awareness']
   }
 ];
 

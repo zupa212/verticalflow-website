@@ -211,6 +211,23 @@ export const projects: Record<string, Project> = {
     impact: 'Improved booking conversion rates and reduced administrative overhead.',
     technologies: ['Next.js', 'Stripe API', 'Booking System', 'Database Management'],
   },
+  'green-family': {
+    id: 12,
+    title: 'Το Ελληνικόν - Green Family',
+    category: 'Short Form Content & Google Ads',
+    description: 'Short form content and Google Ads campaigns for brand awareness and engagement.',
+    year: '2024',
+    services: ['Short Form Content', 'Google Ads', 'Brand Awareness'],
+    videoId: 'a43ba930-b16f-4f74-8da1-1d452e240cd4',
+    gallery: [
+      { type: 'image', url: '/logo-green-family.jpg' },
+      { type: 'video', videoId: 'a43ba930-b16f-4f74-8da1-1d452e240cd4' },
+    ],
+    challenge: 'Building brand awareness through short form content and targeted Google Ads campaigns.',
+    solution: 'Created engaging short form video content optimized for Google Ads and social media platforms.',
+    impact: 'Increased brand visibility and engagement through strategic content and advertising.',
+    technologies: ['Short Form Content', 'Google Ads', 'Video Production', 'Social Media Optimization'],
+  },
 };
 
 export function getProjectBySlug(slug: string): Project | undefined {
