@@ -90,13 +90,13 @@ const projects: Project[] = [
   },
   {
     id: 8,
-    title: '414 CLOTHING',
+    title: '414 CLOTHING - DOMINATION INC',
     category: 'eCommerce & 3D',
-    description: 'Fashion brand - Shopify 3D eCommerce setup with creative direction and immersive shopping experiences.',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80',
+    description: '3D Shopify eCommerce setup for DOMINATION INC band merchandise and streetwear brand.',
+    image: '/logo-domination-inc.jpg',
     slug: '414-clothing',
     year: '2024',
-    services: ['Shopify Setup', '3D eCommerce', 'Creative Direction', 'Brand Development']
+    services: ['3D Shopify']
   },
   {
     id: 9,
