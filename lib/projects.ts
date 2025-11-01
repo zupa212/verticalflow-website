@@ -116,7 +116,7 @@ export const projects: Record<string, Project> = {
     services: ['Short Form Content'],
     videoId: 'f128fa78-0aa4-47a4-bdc7-31c204ed4bd5',
     gallery: [
-      { type: 'image', url: '/logo-izipen.png' },
+      { type: 'image', url: '/logo-izipen.jpg' },
       { type: 'video', videoId: 'f128fa78-0aa4-47a4-bdc7-31c204ed4bd5' },
     ],
     challenge: 'Creating engaging short form content that captures brand essence and drives engagement.',

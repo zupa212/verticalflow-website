@@ -52,7 +52,7 @@ const projects: Project[] = [
     title: 'IZIPEN',
     category: 'Short Form Content',
     description: 'Creative short form content production for brand engagement and social media presence.',
-    image: '/logo-izipen.png',
+    image: '/logo-izipen.jpg',
     slug: 'izipen',
     year: '2024',
     services: ['Short Form Content']
