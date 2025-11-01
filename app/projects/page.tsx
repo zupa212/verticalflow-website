@@ -49,13 +49,13 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'EAZYPEN',
-    category: 'Video Production',
-    description: 'Academic writing platform - Comprehensive video production showcasing the 3-step process for finding professional writers.',
-    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80',
-    slug: 'eazypen',
+    title: 'IZIPEN',
+    category: 'Short Form Content',
+    description: 'Creative short form content production for brand engagement and social media presence.',
+    image: '/logo-izipen.png',
+    slug: 'izipen',
     year: '2024',
-    services: ['Video Production', 'Content Strategy', 'Brand Storytelling', 'Digital Marketing']
+    services: ['Short Form Content']
   },
   {
     id: 5,
