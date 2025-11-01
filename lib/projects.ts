@@ -187,8 +187,6 @@ export const projects: Record<string, Project> = {
     videoId: null,
     gallery: [
       { type: 'image', url: '/logo-domination-inc.jpg' },
-      'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=80',
-      'https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=80',
     ],
     challenge: 'Creating an immersive 3D shopping experience for DOMINATION INC band merchandise and streetwear.',
     solution: 'Built an innovative 3D Shopify store with product visualization and interactive features for the band\'s clothing line.',
@@ -206,8 +204,6 @@ export const projects: Record<string, Project> = {
     videoId: null,
     gallery: [
       { type: 'image', url: '/tsiouplis-screenshot.png' },
-      'https://images.unsplash.com/photo-1492144534655-ae79c7c9eb30?w=1200&q=80',
-      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
     ],
     challenge: 'Creating a professional online presence for car sales and rentals with engaging social media content.',
     solution: 'Developed a modern, user-friendly website and implemented comprehensive social media marketing strategy.',
