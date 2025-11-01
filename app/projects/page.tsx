@@ -69,11 +69,11 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    title: 'FOTIS TRADER',
+    title: 'FOTIS PERSONAL BRAND',
     category: 'Personal Brand Reels',
     description: 'Finance and education content creator - Professional Personal Brand Reels focusing on trading and financial education.',
     image: 'https://images.unsplash.com/photo-1620658502571-b75d27d25922?w=1200&q=80',
-    slug: 'fotis-trader',
+    slug: 'fotis-personal-brand',
     year: '2024',
     services: ['Personal Branding', 'Reels Strategy', 'Content Creation', 'Social Media']
   },

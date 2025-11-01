@@ -141,9 +141,9 @@ export const projects: Record<string, Project> = {
     impact: 'Increased inquiries and client acquisitions through professional presentation.',
     technologies: ['Web Development', 'SEO', 'Content Strategy', 'Lead Generation'],
   },
-  'fotis-trader': {
+  'fotis-personal-brand': {
     id: 8,
-    title: 'FOTIS TRADER',
+    title: 'FOTIS PERSONAL BRAND',
     category: 'Personal Branding',
     description: 'Personal brand development with reels for finance and education content.',
     year: '2024',
