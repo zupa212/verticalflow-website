@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Footer } from '@/components/Footer';
 
 interface Project {
   id: number;
@@ -276,24 +277,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Footer */}
-      <footer className="relative bg-black overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                <span className="text-black font-black text-sm tracking-wider" style={{writingMode: 'vertical-rl', textOrientation: 'mixed'}}>VERTICAL</span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-black text-white leading-none">VerticalFlow</h3>
-                <p className="text-xs text-white/60 mt-1">Creative Portfolio</p>
-              </div>
-            </div>
-            <p className="text-white/60 text-sm">
-              © 2024 VerticalFlow. Portfolio showcase - Not a registered business.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -238,7 +238,7 @@ export function Footer() {
         {/* Bottom Section - Copyright */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} VerticalFlow. Portfolio showcase - Not a registered business.
+            © 2025 VerticalFlow. Portfolio showcase - Not a registered business.
           </p>
           <div className="flex items-center gap-6 text-sm text-white/60">
             <Link href="/privacy" className="hover:text-blue-400 transition-colors">
