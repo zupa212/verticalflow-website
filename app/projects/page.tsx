@@ -60,12 +60,12 @@ const projects: Project[] = [
   {
     id: 5,
     title: 'GOJACK',
-    category: 'Reels & Content',
-    description: 'Company formation services abroad - Professional Reels and content creation for international business setup services.',
+    category: 'Short Form Content & Video Production',
+    description: 'Short form video content and video production for brand awareness and engagement.',
     image: '/logo-gojack.png',
     slug: 'gojack',
     year: '2024',
-    services: ['Reels Content', 'Content Strategy', 'Brand Development', 'Digital Presence']
+    services: ['Short Form Content', 'Video Production', 'Brand Awareness']
   },
   {
     id: 6,
